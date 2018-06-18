@@ -3,6 +3,8 @@ import { Button } from "semantic-ui-react";
 import Dropzone from "react-dropzone";
 import gifshot from "gifshot";
 
+import VideoPlayer from "../components/VideoPreview";
+
 class ConvertVideoContainer extends Component {
   state = {
     file: null,
@@ -54,6 +56,7 @@ class ConvertVideoContainer extends Component {
     } else if (this.state.file !== null && this.state.gif === null) {
       return (
         <div>
+          <VideoPlayer source={this.state.file} />
           <Button onClick={this.createGif}>Create Gif!</Button>
         </div>
       );

@@ -27,7 +27,6 @@ class App extends Component {
       return (
         <div className="App">
           <h1>HomeScreen</h1>
-
           <Button onClick={this.handleClick}>Lets Get Started!</Button>
         </div>
       );
