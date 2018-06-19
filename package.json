@@ -5,6 +5,7 @@
   "dependencies": {
     "gifshot": "^0.4.5",
     "prop-types": "^15.6.1",
+    "rc-slider": "^8.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-dropzone": "^4.2.11",

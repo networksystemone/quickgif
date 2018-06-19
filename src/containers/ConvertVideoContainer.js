@@ -3,15 +3,18 @@ import { Button } from "semantic-ui-react";
 import Dropzone from "react-dropzone";
 import gifshot from "gifshot";
 
-import VideoPlayer from "../components/VideoPreview";
+import VideoSlider from "../components/VideoSlider";
+import VideoPlayer from "../components/VideoPlayer";
 
 class ConvertVideoContainer extends Component {
   state = {
     file: null,
-    gif: null
+    gif: null,
+    videoLength: null
   };
 
   onDrop = file => {
+    console.log(file);
     this.setState({
       file: file[0].preview
     });
@@ -41,6 +44,10 @@ class ConvertVideoContainer extends Component {
     );
   };
 
+  setVideoLength = videoLength => {
+    this.setState({ videoLength });
+  };
+
   render() {
     if (this.state.file === null) {
       return (
@@ -56,7 +63,11 @@ class ConvertVideoContainer extends Component {
     } else if (this.state.file !== null && this.state.gif === null) {
       return (
         <div>
-          <VideoPlayer source={this.state.file} />
+          <VideoPlayer
+            source={this.state.file}
+            getVideoLength={this.setVideoLength}
+          />
+          <VideoSlider min={0} max={this.state.videoLength} />
           <Button onClick={this.createGif}>Create Gif!</Button>
         </div>
       );
