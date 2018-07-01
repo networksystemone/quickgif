@@ -1,4 +1,9 @@
-import gifshot from "gifshot";
+import gifshot from 'gifshot'
+
+//callback to parent component
+getVideoLength = videoLength => {
+  this.props.getVideoLength(videoLength)
+}
 
 export function createGif() {
   gifshot.createGIF(
@@ -10,11 +15,11 @@ export function createGif() {
       saveRenderingContexts: true
     },
     function(obj) {
-      console.log(obj);
+      TODO
     }
-  );
+  )
 }
 
 export function readFile() {
-  TODO;
+  TODO
 }
