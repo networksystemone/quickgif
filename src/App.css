@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  align-items: center;
 }
 
 .App-logo {
@@ -23,6 +23,29 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+p {
+  color: white;
+}
+.vertical-center {
+  min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-buffer {
+  margin-top: 20px;
+}
+p {
+  padding-bottom: 20px;
 }

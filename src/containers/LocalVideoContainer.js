@@ -1,18 +1,22 @@
 import React, { Component } from 'react'
-import { Button } from 'semantic-ui-react'
 import Dropzone from 'react-dropzone'
 import gifshot from 'gifshot'
+import { Button, Container, Col, Row } from 'reactstrap'
+import MdFileUpload from 'react-icons/lib/md/file-upload'
 
 import VideoPreview from '../components/VideoPreview'
 import DecorateOptions from '../components/DecorateOptions'
+import Loader from '../components/Loader'
+import './LocalVideoContainer.css'
 
-class ConvertVideoContainer extends Component {
+class LocalVideoContainer extends Component {
   state = {
     file: null,
     gif: null,
     startTime: 0,
     duration: 0,
     gifComplete: false,
+    showLoader: false,
     savedRenderingContexts: []
   }
 
@@ -24,6 +28,7 @@ class ConvertVideoContainer extends Component {
   }
 
   createGif = () => {
+    this.setState({ showLoader: true })
     if (this.state.gif === null) {
       gifshot.createGIF(
         {
@@ -38,7 +43,8 @@ class ConvertVideoContainer extends Component {
         gif => {
           this.setState({
             gif,
-            savedRenderingContexts: gif.savedRenderingContexts
+            savedRenderingContexts: gif.savedRenderingContexts,
+            showLoader: false
           })
         }
       )
@@ -59,7 +65,8 @@ class ConvertVideoContainer extends Component {
         gif => {
           this.setState({
             gif,
-            gifComplete: true
+            gifComplete: true,
+            showLoader: false
           })
         }
       )
@@ -67,9 +74,6 @@ class ConvertVideoContainer extends Component {
   }
 
   displayGif = () => {
-    console.log(this.state.gif)
-    console.log(this.state.savedRenderingContexts)
-
     return (
       <div>
         <img src={this.state.gif.image} alt="gifImg" />
@@ -78,50 +82,65 @@ class ConvertVideoContainer extends Component {
   }
 
   setDuration = duration => {
-    console.log(duration)
     this.setState({ duration })
   }
 
   setStartTime = startTime => {
-    console.log(startTime)
     this.setState({ startTime })
   }
 
   render() {
-    if (this.state.file === null) {
+    if (this.state.showLoader === true) {
       return (
-        <div>
-          <p>ConvertVideoContainer</p>
-          <Dropzone onDrop={this.onDrop}>
-            <p>
-              Try dropping some files here, or click to select files to upload.
-            </p>
-          </Dropzone>
-        </div>
+        <Container className="vertical-center">
+          <Row>
+            <Loader />
+          </Row>
+        </Container>
+      )
+    } else if (this.state.file === null) {
+      return (
+        <Container className="vertical-center">
+          <Row>
+            <Dropzone className="dropzone" onDrop={this.onDrop}>
+              <p>Drop .MP4 File Here or Click To Upload</p>
+              <p>
+                <MdFileUpload size={50} color="#767d8c" />
+              </p>
+            </Dropzone>
+          </Row>
+        </Container>
       )
     } else if (this.state.file !== null && this.state.gif === null) {
       return (
-        <div>
-          <VideoPreview
-            source={this.state.file}
-            startTime={this.setStartTime}
-            duration={this.setDuration}
-          />
-          <Button onClick={this.createGif}> Decorate </Button>
-        </div>
+        <Container>
+          <Row>
+            <Col>
+              <VideoPreview
+                source={this.state.file}
+                startTime={this.setStartTime}
+                duration={this.setDuration}
+              />
+            </Col>
+          </Row>
+          <Row className="justify-content-end">
+            <Button onClick={this.createGif} color="success" size="md">
+              Decorate
+            </Button>
+          </Row>
+        </Container>
       )
     } else if (this.state.gif !== null && this.state.gifComplete === false) {
       return (
-        <div>
+        <Container>
           {this.displayGif()}
           <DecorateOptions />
-          <Button onClick={this.createGif}> createGif </Button>
-        </div>
+        </Container>
       )
     } else {
-      return <div>{this.displayGif()}</div>
+      return <Container>{this.displayGif()}</Container>
     }
   }
 }
 
-export default ConvertVideoContainer
+export default LocalVideoContainer

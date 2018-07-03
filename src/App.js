@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
-import { Button } from 'semantic-ui-react'
-import ConvertVideoContainer from './containers/ConvertVideoContainer'
+import { Button, Container, Row, Col } from 'reactstrap'
+import FaYoutubePlay from 'react-icons/lib/fa/youtube-play'
+import FaFileMovieO from 'react-icons/lib/fa/file-movie-o'
+import FaHeart from 'react-icons/lib/fa/heart'
 
+import NavBar from './components/NavBar'
+import LocalVideoContainer from './containers/LocalVideoContainer'
+import logo from './toast.svg'
 import './App.css'
 
 class App extends Component {
@@ -19,16 +24,41 @@ class App extends Component {
   render() {
     if (this.state.renderVideoContainer === true) {
       return (
-        <div className="App">
-          <ConvertVideoContainer />
-        </div>
+        <Container fluid className="full-height">
+          <NavBar />
+          <LocalVideoContainer />
+          <Row className="justify-content-center fixed-bottom">
+            <p>
+              Made with <FaHeart color="red" /> from kaleb.io
+            </p>
+          </Row>
+        </Container>
       )
     } else {
       return (
-        <div className="App">
-          <h1>HomeScreen</h1>
-          <Button onClick={this.handleClick}>Lets Get Started!</Button>
-        </div>
+        <Container fluid>
+          <NavBar />
+          <Row className="justify-content-center align-items-center">
+            <img src={logo} class="img-fluid" width="400" height="400" alt="" />
+          </Row>
+          <Row className="justify-content-center align-items-center top-buffer">
+            <Button color="success" onClick={this.handleClick}>
+              <FaFileMovieO /> Convert Local .MP4 Video
+            </Button>
+          </Row>
+
+          <Row className="justify-content-center align-items-center top-buffer">
+            <Button color="danger">
+              <FaYoutubePlay /> Convert Youtube Video (Coming Soon!)
+            </Button>
+          </Row>
+
+          <Row className="justify-content-center fixed-bottom">
+            <p>
+              Made with <FaHeart color="red" /> from kaleb.io
+            </p>
+          </Row>
+        </Container>
       )
     }
   }
