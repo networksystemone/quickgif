@@ -76,7 +76,7 @@ class LocalVideoContainer extends Component {
   displayGif = () => {
     return (
       <div>
-        <img src={this.state.gif.image} alt="gifImg" />
+        <img class="img-fluid" src={this.state.gif.image} alt="gifImg" />
       </div>
     )
   }
@@ -103,7 +103,7 @@ class LocalVideoContainer extends Component {
         <Container className="vertical-center">
           <Row>
             <Dropzone className="dropzone" onDrop={this.onDrop}>
-              <p>Drop .MP4 File Here or Click To Upload</p>
+              <p>Drop .MP4 file here or click to select</p>
               <p>
                 <MdFileUpload size={50} color="#767d8c" />
               </p>
@@ -133,7 +133,10 @@ class LocalVideoContainer extends Component {
     } else if (this.state.gif !== null && this.state.gifComplete === false) {
       return (
         <Container>
-          {this.displayGif()}
+          <Row>
+            <Col align="center">{this.displayGif()}</Col>
+          </Row>
+
           <DecorateOptions />
         </Container>
       )

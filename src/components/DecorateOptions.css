@@ -1,0 +1,12 @@
+label {
+  color: white;
+  font-weight: bold;
+}
+
+.buffer {
+  margin-top: 20px;
+}
+
+.btn-space {
+  margin-right: 5px;
+}

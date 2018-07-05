@@ -1,52 +1,83 @@
 import React, { Component } from 'react'
-import { Input, Button, Dropdown } from 'semantic-ui-react'
+import {
+  Container,
+  Col,
+  Row,
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  FormText,
+  ButtonGroup,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText
+} from 'reactstrap'
 
-const fontOptions = [
-  { key: 1, text: 'Sans-Serif', value: 1 },
-  { key: 2, text: 'Arial', value: 2 },
-  { key: 3, text: 'Calibri', value: 3 },
-  { key: 4, text: 'Times New Roman', value: 4 }
-]
+import { TwitterPicker } from 'react-color'
 
-const verticalAlignOptions = [
-  { key: 1, text: 'Bottom', value: 1 },
-  { key: 2, text: 'Center', value: 2 },
-  { key: 3, text: 'Top', value: 3 }
-]
+import './DecorateOptions.css'
 
 class DecorateOptions extends Component {
   render() {
     return (
-      <div>
-        <div>
-          <Input placeholder="Gif Text" />
-        </div>
-        <div>
-          <Button.Group>
-            <Button>Normal</Button>
-            <Button.Or />
-            <Button>Bold</Button>
-          </Button.Group>
-        </div>
-        <div>
-          <Input
-            label={{ basic: true, content: 'px' }}
-            labelPosition="right"
-            placeholder="Enter font size.."
-          />
-        </div>
-        <div>
-          <Dropdown placeholder="Select Font" selection options={fontOptions} />
-        </div>
-
-        <div>
-          <Dropdown
-            placeholder="Text Alignment"
-            selection
-            options={verticalAlignOptions}
-          />
-        </div>
-      </div>
+      <Container className="buffer">
+        <Row className="justify-content-center">
+          <Col xs="12" sm="8" md="6" lg="4">
+            <Form>
+              <FormGroup>
+                <Label for="textInput">Text</Label>
+                <Input type="text" name="text" id="textInput" />
+              </FormGroup>
+              <FormGroup>
+                <Label for="fontSelect">Font</Label>
+                <Input type="select" name="fontSelect" id="fontSelect">
+                  <option>Sans-Serif</option>
+                  <option>Arial</option>
+                  <option>Calibri</option>
+                  <option>Times New Roman</option>
+                </Input>
+              </FormGroup>
+              <FormGroup>
+                <InputGroup>
+                  <InputGroupAddon addonType="prepend">
+                    <InputGroupText>
+                      <Button className="btn-space" color="secondary">
+                        Normal
+                      </Button>{' '}
+                      <Button color="secondary">
+                        <b>Bold</b>
+                      </Button>{' '}
+                    </InputGroupText>
+                  </InputGroupAddon>
+                  <Input maxLength="3" placeholder="Font Size" />
+                  <InputGroupAddon addonType="append">
+                    <InputGroupText>px</InputGroupText>
+                  </InputGroupAddon>
+                </InputGroup>
+              </FormGroup>
+              <FormGroup>
+                <Label for="colorPicker">Text Color</Label>
+                <TwitterPicker
+                  align="center"
+                  id="colorPicker"
+                  triangle="hide"
+                  width="250"
+                />
+              </FormGroup>
+              <FormGroup>
+                <Button color="primary" size="lg" block>
+                  Preview
+                </Button>
+                <Button color="success" size="lg" block>
+                  Create GIF
+                </Button>
+              </FormGroup>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
     )
   }
 }

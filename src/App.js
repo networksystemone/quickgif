@@ -3,11 +3,25 @@ import { Button, Container, Row, Col } from 'reactstrap'
 import FaYoutubePlay from 'react-icons/lib/fa/youtube-play'
 import FaFileMovieO from 'react-icons/lib/fa/file-movie-o'
 import FaHeart from 'react-icons/lib/fa/heart'
+import FaCode from 'react-icons/lib/fa/code'
 
 import NavBar from './components/NavBar'
 import LocalVideoContainer from './containers/LocalVideoContainer'
 import logo from './toast.svg'
 import './App.css'
+
+/**
+
+<Row className="justify-content-center fixed-bottom">
+  <p>
+    <FaCode size={24} /> with <FaHeart color="red" /> by{' '}
+    <a href="http://www.kaleb.io">
+      <b>kaleb.io</b>
+    </a>
+  </p>
+</Row>
+
+*/
 
 class App extends Component {
   state = {
@@ -27,11 +41,6 @@ class App extends Component {
         <Container fluid className="full-height">
           <NavBar />
           <LocalVideoContainer />
-          <Row className="justify-content-center fixed-bottom">
-            <p>
-              Made with <FaHeart color="red" /> from kaleb.io
-            </p>
-          </Row>
         </Container>
       )
     } else {
@@ -51,12 +60,6 @@ class App extends Component {
             <Button color="danger">
               <FaYoutubePlay /> Convert Youtube Video (Coming Soon!)
             </Button>
-          </Row>
-
-          <Row className="justify-content-center fixed-bottom">
-            <p>
-              Made with <FaHeart color="red" /> from kaleb.io
-            </p>
           </Row>
         </Container>
       )

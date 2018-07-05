@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { string } from 'prop-types'
 import ReactPlayer from 'react-player'
 import Slider, { createSliderWithTooltip } from 'rc-slider'
-import { Container, Row, Col } from 'reactstrap'
+import { Container, Row, Col, Label } from 'reactstrap'
 
 import 'rc-slider/assets/index.css'
 
@@ -62,7 +62,9 @@ class VideoPreview extends Component {
         {/* Start Time Slider*/}
         <Row>
           <Col xs="2">
-            <p>Start Time</p>
+            <Label className="label-text" for="Start Time">
+              Start Time
+            </Label>
           </Col>
           <Col xs="10">
             <SliderWithTooltip
@@ -77,7 +79,9 @@ class VideoPreview extends Component {
         {/* Gif Duration Slider 0-15s */}
         <Row>
           <Col xs="2">
-            <p>Gif Length</p>
+            <Label className="label-text" for="Start Time">
+              GIF Duration
+            </Label>
           </Col>
           <Col xs="10">
             <SliderWithTooltip

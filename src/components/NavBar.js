@@ -16,7 +16,7 @@ export default class NavBar extends React.Component {
               class="d-inline-block align-top"
               alt=""
             />
-            SmoothGif
+            SmoothGIF
           </NavbarBrand>
         </Navbar>
       </div>
