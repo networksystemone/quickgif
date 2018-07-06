@@ -1,0 +1,22 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  /* Trivial style make the text large */
+  font-size: 48px;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+main {
+  flex: 1;
+}
+
+footer {
+  text-align: center;
+  color: white;
+  word-spacing: 5px;
+  margin-bottom: 20px;
+}

@@ -7,7 +7,7 @@ export default class NavBar extends React.Component {
     return (
       <div>
         <Navbar dark>
-          <NavbarBrand href="/">
+          <NavbarBrand href=".">
             <img
               src={logo}
               width="30"
