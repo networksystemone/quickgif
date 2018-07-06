@@ -7,7 +7,6 @@ import { Container, Row, Col, Label } from 'reactstrap'
 import 'rc-slider/assets/index.css'
 
 const SliderWithTooltip = createSliderWithTooltip(Slider)
-const style = { width: 600, margin: 50 }
 
 class VideoPreview extends Component {
   static propTypes = {

@@ -21,13 +21,45 @@ class LocalVideoContainer extends Component {
   }
 
   onDrop = file => {
-    console.log(file)
-    this.setState({
-      file: file[0].preview
-    })
+    if (file[0].type === 'video/mp4') {
+      this.setState({
+        file: file[0].preview
+      })
+    }
   }
 
-  createGif = () => {
+  setDuration = duration => {
+    this.setState({ duration })
+  }
+
+  setStartTime = startTime => {
+    this.setState({ startTime })
+  }
+
+  createPreview = options => {
+    gifshot.createGIF(
+      {
+        gifWidth: 480,
+        gifHeight: 270,
+        savedRenderingContexts: this.state.savedRenderingContexts,
+        text: options.text,
+        fontWeight: options.fontWeight,
+        fontFamily: options.font,
+        fontColor: options.fontColor,
+        fontSize: options.fontSize,
+        textAlign: 'center',
+        textBaseline: 'bottom'
+      },
+
+      gif => {
+        this.setState({
+          gif
+        })
+      }
+    )
+  }
+
+  createGif = options => {
     this.setState({ showLoader: true })
     if (this.state.gif === null) {
       gifshot.createGIF(
@@ -46,6 +78,7 @@ class LocalVideoContainer extends Component {
             savedRenderingContexts: gif.savedRenderingContexts,
             showLoader: false
           })
+          console.log(gif)
         }
       )
     } else {
@@ -54,14 +87,15 @@ class LocalVideoContainer extends Component {
           gifWidth: 480,
           gifHeight: 270,
           savedRenderingContexts: this.state.savedRenderingContexts,
-          text: 'test',
-          fontWeight: 'bold',
-          fontSize: '25px',
-          minFontSize: '10px',
-          fontFamily: 'sans-serif',
+          text: options.text,
+          fontWeight: options.fontWeight,
+          fontFamily: options.font,
+          fontColor: options.fontColor,
+          fontSize: options.fontSize,
           textAlign: 'center',
-          textBaseline: 'center'
+          textBaseline: 'bottom'
         },
+
         gif => {
           this.setState({
             gif,
@@ -73,20 +107,21 @@ class LocalVideoContainer extends Component {
     }
   }
 
+  buildGif = options => {
+    console.log(options)
+    this.createGif(options)
+  }
+
+  buildPreview = options => {
+    this.createPreview(options)
+  }
+
   displayGif = () => {
     return (
       <div>
         <img class="img-fluid" src={this.state.gif.image} alt="gifImg" />
       </div>
     )
-  }
-
-  setDuration = duration => {
-    this.setState({ duration })
-  }
-
-  setStartTime = startTime => {
-    this.setState({ startTime })
   }
 
   render() {
@@ -137,11 +172,20 @@ class LocalVideoContainer extends Component {
             <Col align="center">{this.displayGif()}</Col>
           </Row>
 
-          <DecorateOptions />
+          <DecorateOptions
+            previewOptions={this.buildPreview}
+            createOptions={this.buildGif}
+          />
         </Container>
       )
     } else {
-      return <Container>{this.displayGif()}</Container>
+      return (
+        <Container className="vertical-center">
+          <Row>
+            <Col align="center">{this.displayGif()}</Col>
+          </Row>
+        </Container>
+      )
     }
   }
 }

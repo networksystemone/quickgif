@@ -1,27 +1,13 @@
 import React, { Component } from 'react'
-import { Button, Container, Row, Col } from 'reactstrap'
+import { Button, Container, Row } from 'reactstrap'
 import FaYoutubePlay from 'react-icons/lib/fa/youtube-play'
 import FaFileMovieO from 'react-icons/lib/fa/file-movie-o'
-import FaHeart from 'react-icons/lib/fa/heart'
-import FaCode from 'react-icons/lib/fa/code'
 
 import NavBar from './components/NavBar'
 import LocalVideoContainer from './containers/LocalVideoContainer'
+import Footer from './components/Footer'
 import logo from './toast.svg'
 import './App.css'
-
-/**
-
-<Row className="justify-content-center fixed-bottom">
-  <p>
-    <FaCode size={24} /> with <FaHeart color="red" /> by{' '}
-    <a href="http://www.kaleb.io">
-      <b>kaleb.io</b>
-    </a>
-  </p>
-</Row>
-
-*/
 
 class App extends Component {
   state = {
@@ -41,6 +27,7 @@ class App extends Component {
         <Container fluid className="full-height">
           <NavBar />
           <LocalVideoContainer />
+          <Footer />
         </Container>
       )
     } else {
@@ -61,6 +48,7 @@ class App extends Component {
               <FaYoutubePlay /> Convert Youtube Video (Coming Soon!)
             </Button>
           </Row>
+          <Footer />
         </Container>
       )
     }

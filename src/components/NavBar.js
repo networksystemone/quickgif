@@ -1,6 +1,5 @@
 import React from 'react'
 import { Navbar, NavbarBrand } from 'reactstrap'
-
 import logo from '../toast.svg'
 
 export default class NavBar extends React.Component {
@@ -14,7 +13,6 @@ export default class NavBar extends React.Component {
               width="30"
               height="30"
               class="d-inline-block align-top"
-              alt=""
             />
             SmoothGIF
           </NavbarBrand>

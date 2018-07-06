@@ -2,8 +2,6 @@ import React from 'react'
 import { Container, Row } from 'reactstrap'
 import { PulseLoader } from 'react-spinners'
 
-import './Loader.css'
-
 class Loader extends React.Component {
   render() {
     return (
