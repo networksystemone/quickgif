@@ -1,13 +1,12 @@
-import React, { Component } from 'react'
-import Dropzone from 'react-dropzone'
-import gifshot from 'gifshot'
-import { Button, Container, Col, Row } from 'reactstrap'
-import MdFileUpload from 'react-icons/lib/md/file-upload'
+import React, { Component } from "react";
+import gifshot from "gifshot";
+import { Button, Container, Col, Row } from "reactstrap";
 
-import VideoPreview from '../components/VideoPreview'
-import DecorateOptions from '../components/DecorateOptions'
-import Loader from '../components/Loader'
-import './LocalVideoContainer.css'
+import FileDrop from "../components/FileDrop";
+import VideoPreview from "../components/VideoPreview";
+import DecorateOptions from "../components/DecorateOptions";
+import Loader from "../components/Loader";
+import "./LocalVideoContainer.css";
 
 class LocalVideoContainer extends Component {
   state = {
@@ -18,23 +17,21 @@ class LocalVideoContainer extends Component {
     gifComplete: false,
     showLoader: false,
     savedRenderingContexts: []
-  }
+  };
 
-  onDrop = file => {
-    if (file[0].type === 'video/mp4') {
-      this.setState({
-        file: file[0].preview
-      })
-    }
-  }
+  handleFile = file => {
+    this.setState({
+      file
+    });
+  };
 
   setDuration = duration => {
-    this.setState({ duration })
-  }
+    this.setState({ duration });
+  };
 
   setStartTime = startTime => {
-    this.setState({ startTime })
-  }
+    this.setState({ startTime });
+  };
 
   createPreview = options => {
     gifshot.createGIF(
@@ -47,20 +44,20 @@ class LocalVideoContainer extends Component {
         fontFamily: options.font,
         fontColor: options.fontColor,
         fontSize: options.fontSize,
-        textAlign: 'center',
-        textBaseline: 'bottom'
+        textAlign: "center",
+        textBaseline: "bottom"
       },
 
       gif => {
         this.setState({
           gif
-        })
+        });
       }
-    )
-  }
+    );
+  };
 
   createGif = options => {
-    this.setState({ showLoader: true })
+    this.setState({ showLoader: true });
     if (this.state.gif === null) {
       gifshot.createGIF(
         {
@@ -77,10 +74,10 @@ class LocalVideoContainer extends Component {
             gif,
             savedRenderingContexts: gif.savedRenderingContexts,
             showLoader: false
-          })
-          console.log(gif)
+          });
+          console.log(gif);
         }
-      )
+      );
     } else {
       gifshot.createGIF(
         {
@@ -92,8 +89,8 @@ class LocalVideoContainer extends Component {
           fontFamily: options.font,
           fontColor: options.fontColor,
           fontSize: options.fontSize,
-          textAlign: 'center',
-          textBaseline: 'bottom'
+          textAlign: "center",
+          textBaseline: "bottom"
         },
 
         gif => {
@@ -101,28 +98,28 @@ class LocalVideoContainer extends Component {
             gif,
             gifComplete: true,
             showLoader: false
-          })
+          });
         }
-      )
+      );
     }
-  }
+  };
 
   buildGif = options => {
-    console.log(options)
-    this.createGif(options)
-  }
+    console.log(options);
+    this.createGif(options);
+  };
 
   buildPreview = options => {
-    this.createPreview(options)
-  }
+    this.createPreview(options);
+  };
 
   displayGif = () => {
     return (
       <div>
         <img class="img-fluid" src={this.state.gif.image} alt="gifImg" />
       </div>
-    )
-  }
+    );
+  };
 
   render() {
     if (this.state.showLoader === true) {
@@ -132,20 +129,9 @@ class LocalVideoContainer extends Component {
             <Loader />
           </Row>
         </Container>
-      )
+      );
     } else if (this.state.file === null) {
-      return (
-        <Container className="vertical-center">
-          <Row>
-            <Dropzone className="dropzone" onDrop={this.onDrop}>
-              <p>Drop .MP4 file here or click to select</p>
-              <p>
-                <MdFileUpload size={50} color="#767d8c" />
-              </p>
-            </Dropzone>
-          </Row>
-        </Container>
-      )
+      return <FileDrop file={this.handleFile} />;
     } else if (this.state.file !== null && this.state.gif === null) {
       return (
         <Container>
@@ -164,7 +150,7 @@ class LocalVideoContainer extends Component {
             </Button>
           </Row>
         </Container>
-      )
+      );
     } else if (this.state.gif !== null && this.state.gifComplete === false) {
       return (
         <Container>
@@ -177,7 +163,7 @@ class LocalVideoContainer extends Component {
             createOptions={this.buildGif}
           />
         </Container>
-      )
+      );
     } else {
       return (
         <Container className="vertical-center">
@@ -185,9 +171,9 @@ class LocalVideoContainer extends Component {
             <Col align="center">{this.displayGif()}</Col>
           </Row>
         </Container>
-      )
+      );
     }
   }
 }
 
-export default LocalVideoContainer
+export default LocalVideoContainer;
