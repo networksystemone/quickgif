@@ -2,7 +2,7 @@ import React from "react";
 import Dropzone from "react-dropzone";
 import MdFileUpload from "react-icons/lib/md/file-upload";
 import { Container, Row } from "reactstrap";
-import "../containers/LocalVideoContainer.css";
+import "./FileDrop.css";
 
 class FileDrop extends React.Component {
   onDrop = file => {
