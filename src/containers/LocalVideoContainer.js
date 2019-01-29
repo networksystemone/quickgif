@@ -32,29 +32,6 @@ class LocalVideoContainer extends Component {
     this.setState({ startTime });
   };
 
-  createPreview = options => {
-    gifshot.createGIF(
-      {
-        gifWidth: 480,
-        gifHeight: 270,
-        savedRenderingContexts: this.state.savedRenderingContexts,
-        text: options.text,
-        fontWeight: options.fontWeight,
-        fontFamily: options.font,
-        fontColor: options.fontColor,
-        fontSize: options.fontSize,
-        textAlign: 'center',
-        textBaseline: 'bottom'
-      },
-
-      gif => {
-        this.setState({
-          gif
-        });
-      }
-    );
-  };
-
   createGif = options => {
     this.setState({ showLoader: true });
     if (this.state.gif === null) {
