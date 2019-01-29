@@ -61,10 +61,6 @@ class LocalVideoContainer extends Component {
     this.createGif(options);
   };
 
-  buildPreview = options => {
-    this.createPreview(options);
-  };
-
   displayGif = () => {
     return (
       <div>
@@ -98,7 +94,7 @@ class LocalVideoContainer extends Component {
           </Row>
           <Row className='justify-content-end'>
             <Button onClick={this.createGif} color='success' size='md'>
-              Decorate
+              Create Gif
             </Button>
           </Row>
         </Container>
