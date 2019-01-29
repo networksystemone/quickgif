@@ -14,8 +14,7 @@ class LocalVideoContainer extends Component {
     startTime: 0,
     duration: 0,
     gifComplete: false,
-    showLoader: false,
-    savedRenderingContexts: []
+    showLoader: false
   };
 
   handleFile = file => {
@@ -42,22 +41,18 @@ class LocalVideoContainer extends Component {
         gifHeight: 270,
         numFrames: this.state.duration / 0.1,
         frameDuration: 1,
-        offset: this.state.startTime,
-        saveRenderingContexts: true
+        offset: this.state.startTime
       },
       gif => {
         this.setState({
           gif,
-          savedRenderingContexts: gif.savedRenderingContexts,
           showLoader: false
         });
-        console.log(gif);
       }
     );
   };
 
   buildGif = options => {
-    console.log(options);
     this.createGif(options);
   };
 
