@@ -2,7 +2,7 @@ p {
   color: white;
   padding-bottom: 20px;
 }
-. .vertical-center {
+.vertical-center {
   min-height: 100%; /* Fallback for browsers do NOT support vh unit */
   min-height: 100vh; /* These two lines are counted as one :-)       */
 
