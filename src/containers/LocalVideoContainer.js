@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import gifshot from "gifshot";
-import { Button, Container, Col, Row } from "reactstrap";
+import React, { Component } from 'react';
+import gifshot from 'gifshot';
+import { Button, Container, Col, Row } from 'reactstrap';
 
-import FileDrop from "../components/FileDrop";
-import VideoPreview from "../components/VideoPreview";
-import DecorateOptions from "../components/DecorateOptions";
-import Loader from "../components/Loader";
-import "./LocalVideoContainer.css";
+import FileDrop from '../components/FileDrop';
+import VideoPreview from '../components/VideoPreview';
+import DecorateOptions from '../components/DecorateOptions';
+import Loader from '../components/Loader';
+import './LocalVideoContainer.css';
 
 class LocalVideoContainer extends Component {
   state = {
@@ -44,8 +44,8 @@ class LocalVideoContainer extends Component {
         fontFamily: options.font,
         fontColor: options.fontColor,
         fontSize: options.fontSize,
-        textAlign: "center",
-        textBaseline: "bottom"
+        textAlign: 'center',
+        textBaseline: 'bottom'
       },
 
       gif => {
@@ -89,8 +89,8 @@ class LocalVideoContainer extends Component {
           fontFamily: options.font,
           fontColor: options.fontColor,
           fontSize: options.fontSize,
-          textAlign: "center",
-          textBaseline: "bottom"
+          textAlign: 'center',
+          textBaseline: 'bottom'
         },
 
         gif => {
@@ -116,7 +116,7 @@ class LocalVideoContainer extends Component {
   displayGif = () => {
     return (
       <div>
-        <img class="img-fluid" src={this.state.gif.image} alt="gifImg" />
+        <img class='img-fluid' src={this.state.gif.image} alt='gifImg' />
       </div>
     );
   };
@@ -124,7 +124,7 @@ class LocalVideoContainer extends Component {
   render() {
     if (this.state.showLoader === true) {
       return (
-        <Container className="vertical-center">
+        <Container className='vertical-center'>
           <Row>
             <Loader />
           </Row>
@@ -144,31 +144,18 @@ class LocalVideoContainer extends Component {
               />
             </Col>
           </Row>
-          <Row className="justify-content-end">
-            <Button onClick={this.createGif} color="success" size="md">
+          <Row className='justify-content-end'>
+            <Button onClick={this.createGif} color='success' size='md'>
               Decorate
             </Button>
           </Row>
         </Container>
       );
-    } else if (this.state.gif !== null && this.state.gifComplete === false) {
-      return (
-        <Container>
-          <Row>
-            <Col align="center">{this.displayGif()}</Col>
-          </Row>
-
-          <DecorateOptions
-            previewOptions={this.buildPreview}
-            createOptions={this.buildGif}
-          />
-        </Container>
-      );
     } else {
       return (
-        <Container className="vertical-center">
+        <Container className='vertical-center'>
           <Row>
-            <Col align="center">{this.displayGif()}</Col>
+            <Col align='center'>{this.displayGif()}</Col>
           </Row>
         </Container>
       );
