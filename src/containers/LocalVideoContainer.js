@@ -34,50 +34,26 @@ class LocalVideoContainer extends Component {
 
   createGif = options => {
     this.setState({ showLoader: true });
-    if (this.state.gif === null) {
-      gifshot.createGIF(
-        {
-          video: this.state.file,
-          gifWidth: 480,
-          gifHeight: 270,
-          numFrames: this.state.duration / 0.1,
-          frameDuration: 1,
-          offset: this.state.startTime,
-          saveRenderingContexts: true
-        },
-        gif => {
-          this.setState({
-            gif,
-            savedRenderingContexts: gif.savedRenderingContexts,
-            showLoader: false
-          });
-          console.log(gif);
-        }
-      );
-    } else {
-      gifshot.createGIF(
-        {
-          gifWidth: 480,
-          gifHeight: 270,
-          savedRenderingContexts: this.state.savedRenderingContexts,
-          text: options.text,
-          fontWeight: options.fontWeight,
-          fontFamily: options.font,
-          fontColor: options.fontColor,
-          fontSize: options.fontSize,
-          textAlign: 'center',
-          textBaseline: 'bottom'
-        },
 
-        gif => {
-          this.setState({
-            gif,
-            gifComplete: true,
-            showLoader: false
-          });
-        }
-      );
-    }
+    gifshot.createGIF(
+      {
+        video: this.state.file,
+        gifWidth: 480,
+        gifHeight: 270,
+        numFrames: this.state.duration / 0.1,
+        frameDuration: 1,
+        offset: this.state.startTime,
+        saveRenderingContexts: true
+      },
+      gif => {
+        this.setState({
+          gif,
+          savedRenderingContexts: gif.savedRenderingContexts,
+          showLoader: false
+        });
+        console.log(gif);
+      }
+    );
   };
 
   buildGif = options => {
