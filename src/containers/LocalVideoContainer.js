@@ -4,7 +4,6 @@ import { Button, Container, Col, Row } from 'reactstrap';
 
 import FileDrop from '../components/FileDrop';
 import VideoPreview from '../components/VideoPreview';
-import DecorateOptions from '../components/DecorateOptions';
 import Loader from '../components/Loader';
 import './LocalVideoContainer.css';
 
