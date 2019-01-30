@@ -2,6 +2,7 @@ import { observable, action, computed } from 'mobx';
 
 class GifStore {
   @observable file = null;
+  @observable gif = null;
   @observable duration;
   @observable startTime;
 
@@ -17,6 +18,10 @@ class GifStore {
     return this.startTime;
   }
 
+  get gif() {
+    return this.gif;
+  }
+
   @action setDuration(duration) {
     this.duration = duration;
   }
@@ -27,6 +32,10 @@ class GifStore {
 
   @action setStartTime(startTime) {
     this.startTime = startTime;
+  }
+
+  @action setGif(gif) {
+    this.gif = gif;
   }
 }
 

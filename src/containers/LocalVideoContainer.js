@@ -2,19 +2,16 @@ import React, { Component } from 'react';
 import gifshot from 'gifshot';
 import { Button, Container, Col, Row } from 'reactstrap';
 import { observer, inject } from 'mobx-react';
-
+import { create } from '../GifMaker';
 import FileDrop from '../components/FileDrop';
 import VideoPreview from '../components/VideoPreview';
-import Loader from '../components/Loader';
 import './LocalVideoContainer.css';
 
 @inject('GifStore')
 @observer
 class LocalVideoContainer extends Component {
   state = {
-    gif: null,
-    gifComplete: false,
-    showLoader: false
+    gif: null
   };
 
   handleFile = file => {
@@ -29,52 +26,34 @@ class LocalVideoContainer extends Component {
     this.props.GifStore.setStartTime(startTime);
   };
 
-  createGif = options => {
-    this.setState({ showLoader: true });
-
-    gifshot.createGIF(
-      {
-        video: this.props.GifStore.file,
-        gifWidth: 480,
-        gifHeight: 270,
-        numFrames: this.props.GifStore.duration / 0.1,
-        frameDuration: 1,
-        offset: this.props.GifStore.startTime
-      },
-      gif => {
-        this.setState({
-          gif,
-          showLoader: false
-        });
-      }
-    );
+  createGif = () => {
+    create();
   };
 
   displayGif = () => {
     return (
       <div>
-        <img class='img-fluid' src={this.state.gif.image} alt='gifImg' />
+        <img
+          class='img-fluid'
+          src={this.props.GifStore.gif.image}
+          alt='gifImg'
+        />
       </div>
     );
   };
 
   render() {
-    if (this.state.showLoader === true) {
-      return (
-        <Container className='vertical-center'>
-          <Row>
-            <Loader />
-          </Row>
-        </Container>
-      );
-    } else if (this.props.GifStore.file === null) {
+    if (this.props.GifStore.file === null) {
       return (
         <div>
           <FileDrop file={this.handleFile} />
           <p>{this.props.GifStore.file}</p>
         </div>
       );
-    } else if (this.props.GifStore.file !== null && this.state.gif === null) {
+    } else if (
+      this.props.GifStore.file !== null &&
+      this.props.GifStore.gif === null
+    ) {
       return (
         <Container>
           <Row>
