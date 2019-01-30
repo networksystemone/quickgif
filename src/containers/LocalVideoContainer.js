@@ -52,10 +52,6 @@ class LocalVideoContainer extends Component {
     );
   };
 
-  buildGif = options => {
-    this.createGif(options);
-  };
-
   displayGif = () => {
     return (
       <div>
