@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
-
 import NavBar from './components/NavBar';
 import LocalVideoContainer from './containers/LocalVideoContainer';
 import './App.css';

@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import gifshot from 'gifshot';
 import { Button, Container, Col, Row } from 'reactstrap';
+import { observer, inject } from 'mobx-react';
 
 import FileDrop from '../components/FileDrop';
 import VideoPreview from '../components/VideoPreview';
 import Loader from '../components/Loader';
 import './LocalVideoContainer.css';
 
+@inject('GifStore')
+@observer
 class LocalVideoContainer extends Component {
   state = {
     file: null,
@@ -74,7 +77,12 @@ class LocalVideoContainer extends Component {
         </Container>
       );
     } else if (this.state.file === null) {
-      return <FileDrop file={this.handleFile} />;
+      return (
+        <div>
+          <FileDrop file={this.handleFile} />
+          <p>{this.props.GifStore.video}</p>
+        </div>
+      );
     } else if (this.state.file !== null && this.state.gif === null) {
       return (
         <Container>
