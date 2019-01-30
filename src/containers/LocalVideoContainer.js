@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import gifshot from 'gifshot';
 import { Button, Container, Col, Row } from 'reactstrap';
 import { observer, inject } from 'mobx-react';
 import { create } from '../GifMaker';
@@ -10,10 +9,6 @@ import './LocalVideoContainer.css';
 @inject('GifStore')
 @observer
 class LocalVideoContainer extends Component {
-  state = {
-    gif: null
-  };
-
   handleFile = file => {
     this.props.GifStore.setFile(file);
   };
