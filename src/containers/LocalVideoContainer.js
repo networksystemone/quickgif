@@ -12,7 +12,6 @@ import './LocalVideoContainer.css';
 @observer
 class LocalVideoContainer extends Component {
   state = {
-    file: null,
     gif: null,
     startTime: 0,
     duration: 0,
@@ -21,9 +20,7 @@ class LocalVideoContainer extends Component {
   };
 
   handleFile = file => {
-    this.setState({
-      file
-    });
+    this.props.GifStore.setFile(file);
   };
 
   setDuration = duration => {
@@ -34,16 +31,12 @@ class LocalVideoContainer extends Component {
     this.setState({ startTime });
   };
 
-  /**
-   * Pull out into seperate function
-   * Set mobx state from that function
-   */
   createGif = options => {
     this.setState({ showLoader: true });
 
     gifshot.createGIF(
       {
-        video: this.state.file,
+        video: this.props.GifStore.file,
         gifWidth: 480,
         gifHeight: 270,
         numFrames: this.state.duration / 0.1,
@@ -76,20 +69,20 @@ class LocalVideoContainer extends Component {
           </Row>
         </Container>
       );
-    } else if (this.state.file === null) {
+    } else if (this.props.GifStore.file === null) {
       return (
         <div>
           <FileDrop file={this.handleFile} />
-          <p>{this.props.GifStore.video}</p>
+          <p>{this.props.GifStore.file}</p>
         </div>
       );
-    } else if (this.state.file !== null && this.state.gif === null) {
+    } else if (this.props.GifStore.file !== null && this.state.gif === null) {
       return (
         <Container>
           <Row>
             <Col>
               <VideoPreview
-                source={this.state.file}
+                source={this.props.GifStore.file}
                 startTime={this.setStartTime}
                 duration={this.setDuration}
               />

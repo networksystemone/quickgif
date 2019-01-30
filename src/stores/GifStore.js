@@ -1,10 +1,14 @@
 import { observable, action, computed } from 'mobx';
 
 class GifStore {
-  @observable video = 'this is the video';
+  @observable file = null;
 
-  get video() {
+  get file() {
     return this.video;
+  }
+
+  @action setFile(file) {
+    this.file = file;
   }
 }
 
