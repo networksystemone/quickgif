@@ -31,6 +31,10 @@ class LocalVideoContainer extends Component {
     this.setState({ startTime });
   };
 
+  /**
+   * Pull out into seperate function
+   * Set mobx state from that function
+   */
   createGif = options => {
     this.setState({ showLoader: true });
 
