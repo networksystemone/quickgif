@@ -13,7 +13,6 @@ import './LocalVideoContainer.css';
 class LocalVideoContainer extends Component {
   state = {
     gif: null,
-    startTime: 0,
     gifComplete: false,
     showLoader: false
   };
@@ -27,7 +26,7 @@ class LocalVideoContainer extends Component {
   };
 
   setStartTime = startTime => {
-    this.setState({ startTime });
+    this.props.GifStore.setStartTime(startTime);
   };
 
   createGif = options => {
@@ -40,7 +39,7 @@ class LocalVideoContainer extends Component {
         gifHeight: 270,
         numFrames: this.props.GifStore.duration / 0.1,
         frameDuration: 1,
-        offset: this.state.startTime
+        offset: this.props.GifStore.startTime
       },
       gif => {
         this.setState({
