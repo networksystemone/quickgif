@@ -2,8 +2,6 @@ html,
 body {
   height: 100%;
   margin: 0;
-  /* Trivial style make the text large */
-  font-size: 48px;
 }
 body {
   display: flex;
