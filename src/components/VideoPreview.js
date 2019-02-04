@@ -42,7 +42,7 @@ class VideoPreview extends Component {
   render() {
     return (
       <Container>
-        <Segment>
+        <SegementStyled>
           <ReactPlayer
             ref={this.ref}
             url={this.props.source}
@@ -66,7 +66,7 @@ class VideoPreview extends Component {
             max={15}
             onChange={this.handleDurationChange}
           />
-        </Segment>
+        </SegementStyled>
       </Container>
     );
   }
@@ -76,6 +76,10 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+const SegementStyled = styled(Segment)`
+  max-width: 50%;
 `;
 
 export default VideoPreview;
