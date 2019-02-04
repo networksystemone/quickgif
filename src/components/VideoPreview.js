@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { Segment } from 'semantic-ui-react';
+import styled from 'styled-components';
 import { string } from 'prop-types';
 import ReactPlayer from 'react-player';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
-import { Container, Row, Col, Label } from 'reactstrap';
 
 import 'rc-slider/assets/index.css';
 
@@ -41,57 +42,40 @@ class VideoPreview extends Component {
   render() {
     return (
       <Container>
-        <Row>
-          <Col align='center'>
-            <ReactPlayer
-              ref={this.ref}
-              url={this.props.source}
-              onDuration={this.setVideoLength}
-              playing
-              muted
-              width='100%'
-              height='100%'
-            />
-          </Col>
-        </Row>
-        <hr />
+        <Segment>
+          <ReactPlayer
+            ref={this.ref}
+            url={this.props.source}
+            onDuration={this.setVideoLength}
+            playing
+            muted
+            width='100%'
+            height='100%'
+          />
 
-        {/* Start Time Slider*/}
-        <Row>
-          <Col xs='2'>
-            <Label className='label-text' for='Start Time'>
-              Start Time
-            </Label>
-          </Col>
-          <Col xs='10'>
-            <SliderWithTooltip
-              tipFormatter={this.secondsFormatter}
-              min={0}
-              max={this.state.videoLength}
-              onChange={this.handleStartChange}
-            />
-          </Col>
-        </Row>
+          <SliderWithTooltip
+            tipFormatter={this.secondsFormatter}
+            min={0}
+            max={this.state.videoLength}
+            onChange={this.handleStartChange}
+          />
 
-        {/* Gif Duration Slider 0-15s */}
-        <Row>
-          <Col xs='2'>
-            <Label className='label-text' for='Start Time'>
-              GIF Duration
-            </Label>
-          </Col>
-          <Col xs='10'>
-            <SliderWithTooltip
-              tipFormatter={this.secondsFormatter}
-              min={1}
-              max={15}
-              onChange={this.handleDurationChange}
-            />
-          </Col>
-        </Row>
+          <SliderWithTooltip
+            tipFormatter={this.secondsFormatter}
+            min={1}
+            max={15}
+            onChange={this.handleDurationChange}
+          />
+        </Segment>
       </Container>
     );
   }
 }
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 export default VideoPreview;
