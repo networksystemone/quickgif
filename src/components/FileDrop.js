@@ -13,7 +13,7 @@ class FileDrop extends React.Component {
     return (
       <Container>
         <Segment placeholder>
-          <Header icon>1) Upload Video</Header>
+          <Header>1) Upload Video</Header>
           <DropzoneContainer>
             <Dropzone className='dropzone' onDrop={this.onDrop}>
               <p>Drag video file here or click to browse</p>
@@ -29,6 +29,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 `;
 const DropzoneContainer = styled.div`
   display: flex;

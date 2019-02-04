@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment } from 'semantic-ui-react';
+import { Segment, Header, Label } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { string } from 'prop-types';
 import ReactPlayer from 'react-player';
@@ -42,31 +42,41 @@ class VideoPreview extends Component {
   render() {
     return (
       <Container>
-        <SegementStyled>
+        <Sliders>
+          <Header>2) Trim Your Video</Header>
+          <Header.Subheader>
+            Use the sliders to select Start Time and Duration for your Gif
+          </Header.Subheader>
+          <SliderContainer>
+            <Label style={{ margin: '10px' }}>Start Time</Label>
+            <SliderWithTooltip
+              tipFormatter={this.secondsFormatter}
+              min={0}
+              max={this.state.videoLength}
+              onChange={this.handleStartChange}
+              style={{ margin: '10px' }}
+            />
+          </SliderContainer>
+          <SliderContainer>
+            <Label style={{ margin: '10px' }}>Duration</Label>
+            <SliderWithTooltip
+              tipFormatter={this.secondsFormatter}
+              min={1}
+              max={15}
+              onChange={this.handleDurationChange}
+              style={{ margin: '10px' }}
+            />
+          </SliderContainer>
+        </Sliders>
+        <div>
           <ReactPlayer
             ref={this.ref}
             url={this.props.source}
             onDuration={this.setVideoLength}
             playing
             muted
-            width='100%'
-            height='100%'
           />
-
-          <SliderWithTooltip
-            tipFormatter={this.secondsFormatter}
-            min={0}
-            max={this.state.videoLength}
-            onChange={this.handleStartChange}
-          />
-
-          <SliderWithTooltip
-            tipFormatter={this.secondsFormatter}
-            min={1}
-            max={15}
-            onChange={this.handleDurationChange}
-          />
-        </SegementStyled>
+        </div>
       </Container>
     );
   }
@@ -75,11 +85,19 @@ class VideoPreview extends Component {
 const Container = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  text-align: center;
 `;
 
-const SegementStyled = styled(Segment)`
-  max-width: 50%;
+const Sliders = styled(Segment)`
+  min-width: 400px;
+`;
+
+const SliderContainer = styled.div`
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export default VideoPreview;
