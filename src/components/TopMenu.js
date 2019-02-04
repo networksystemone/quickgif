@@ -14,27 +14,27 @@ class TopMenu extends Component {
         <Menu.Item>QuickGif</Menu.Item>
 
         <Menu.Item
-          name='features'
-          active={activeItem === 'features'}
+          name='Create'
+          active={activeItem === 'create'}
           onClick={this.handleItemClick}
         >
-          Features
+          Create
         </Menu.Item>
 
         <Menu.Item
-          name='testimonials'
-          active={activeItem === 'testimonials'}
+          name='About'
+          active={activeItem === 'About'}
           onClick={this.handleItemClick}
         >
-          Testimonials
+          About
         </Menu.Item>
 
         <Menu.Item
-          name='sign-in'
-          active={activeItem === 'sign-in'}
+          name='View Source'
+          active={activeItem === 'view-source'}
           onClick={this.handleItemClick}
         >
-          Sign-in
+          View Source
         </Menu.Item>
       </Menu>
     );

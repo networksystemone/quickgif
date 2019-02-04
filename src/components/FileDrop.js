@@ -1,6 +1,7 @@
 import React from 'react';
+import { Header, Segment } from 'semantic-ui-react';
+import styled from 'styled-components';
 import Dropzone from 'react-dropzone';
-import MdFileUpload from 'react-icons/lib/md/file-upload';
 
 import './FileDrop.css';
 
@@ -10,16 +11,28 @@ class FileDrop extends React.Component {
   };
   render() {
     return (
-      <div>
-        <Dropzone className='dropzone' onDrop={this.onDrop}>
-          <p>Drop .MP4 file here or click to select</p>
-          <p>
-            <MdFileUpload size={50} color='#767d8c' />
-          </p>
-        </Dropzone>
-      </div>
+      <Container>
+        <Segment placeholder>
+          <Header icon>1) Upload Video</Header>
+          <DropzoneContainer>
+            <Dropzone className='dropzone' onDrop={this.onDrop}>
+              <p>Drag video file here or click to browse</p>
+            </Dropzone>
+          </DropzoneContainer>
+        </Segment>
+      </Container>
     );
   }
 }
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const DropzoneContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 export default FileDrop;
