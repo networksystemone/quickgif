@@ -5,7 +5,7 @@ import { string } from 'prop-types';
 import ReactPlayer from 'react-player';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
 
-import { create } from '../GifMaker';
+import { createPreview } from '../GifMaker';
 
 import 'rc-slider/assets/index.css';
 
@@ -42,7 +42,7 @@ class VideoPreview extends Component {
   };
 
   createGif = () => {
-    create();
+    createPreview();
   };
 
   render() {
@@ -112,10 +112,6 @@ const SliderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const SizeButton = styled(Button)`
-  margin: 10 0;
 `;
 
 export default VideoPreview;
