@@ -14,6 +14,14 @@ class TopMenu extends Component {
         <Menu.Item>QuickGif</Menu.Item>
 
         <Menu.Item
+          name='Home'
+          active={activeItem === 'home'}
+          onClick={this.handleItemClick}
+        >
+          Home
+        </Menu.Item>
+
+        <Menu.Item
           name='Create'
           active={activeItem === 'create'}
           onClick={this.handleItemClick}
@@ -23,7 +31,7 @@ class TopMenu extends Component {
 
         <Menu.Item
           name='About'
-          active={activeItem === 'About'}
+          active={activeItem === 'hbout'}
           onClick={this.handleItemClick}
         >
           About
