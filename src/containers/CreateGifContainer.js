@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'semantic-ui-react';
 import { observer, inject } from 'mobx-react';
-
-import { create } from '../GifMaker';
 import FileDrop from '../components/FileDrop';
 import VideoPreview from '../components/VideoPreview';
 
@@ -21,10 +18,6 @@ class CreateGifContainer extends Component {
     this.props.GifStore.setStartTime(startTime);
   };
 
-  createGif = () => {
-    create();
-  };
-
   displayGif = () => {
     return (
       <div>
@@ -35,30 +28,17 @@ class CreateGifContainer extends Component {
 
   render() {
     if (this.props.GifStore.file === null) {
-      return (
-        <div>
-          <FileDrop file={this.handleFile} />
-        </div>
-      );
+      return <FileDrop file={this.handleFile} />;
     } else if (
       this.props.GifStore.file !== null &&
       this.props.GifStore.gif === null
     ) {
       return (
-        <div>
-          <div>
-            <VideoPreview
-              source={this.props.GifStore.file}
-              startTime={this.setStartTime}
-              duration={this.setDuration}
-            />
-          </div>
-          <div>
-            <Button onClick={this.createGif} type='primary'>
-              Create
-            </Button>
-          </div>
-        </div>
+        <VideoPreview
+          source={this.props.GifStore.file}
+          startTime={this.setStartTime}
+          duration={this.setDuration}
+        />
       );
     } else {
       return <div>{this.displayGif()}</div>;

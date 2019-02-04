@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Segment, Header, Label } from 'semantic-ui-react';
+import { Segment, Header, Label, Button } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { string } from 'prop-types';
 import ReactPlayer from 'react-player';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
+
+import { create } from '../GifMaker';
 
 import 'rc-slider/assets/index.css';
 
@@ -37,6 +39,10 @@ class VideoPreview extends Component {
 
   handleDurationChange = value => {
     this.props.duration(value);
+  };
+
+  createGif = () => {
+    create();
   };
 
   render() {
@@ -78,6 +84,7 @@ class VideoPreview extends Component {
               muted
             />
           </Segment>
+          <Button onClick={this.createGif}>Add a caption</Button>
         </div>
       </Container>
     );
