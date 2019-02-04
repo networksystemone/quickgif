@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
+import { Button } from 'semantic-ui-react';
 import { observer, inject } from 'mobx-react';
 
 import { create } from '../GifMaker';
@@ -54,8 +54,8 @@ class CreateGifContainer extends Component {
             />
           </div>
           <div>
-            <Button onClick={this.createGif} color='success' size='md'>
-              Create Gif
+            <Button onClick={this.createGif} type='primary'>
+              Create
             </Button>
           </div>
         </div>
