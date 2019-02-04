@@ -69,13 +69,15 @@ class VideoPreview extends Component {
           </SliderContainer>
         </Sliders>
         <div>
-          <ReactPlayer
-            ref={this.ref}
-            url={this.props.source}
-            onDuration={this.setVideoLength}
-            playing
-            muted
-          />
+          <Segment>
+            <ReactPlayer
+              ref={this.ref}
+              url={this.props.source}
+              onDuration={this.setVideoLength}
+              playing
+              muted
+            />
+          </Segment>
         </div>
       </Container>
     );
