@@ -49,10 +49,7 @@ class VideoPreview extends Component {
     return (
       <Container>
         <Sliders>
-          <Header>2) Trim Your Video</Header>
-          <Header.Subheader>
-            Use the sliders to select Start Time and Duration for your Gif
-          </Header.Subheader>
+          <Header>2) Trim your video and select width</Header>
           <SliderContainer>
             <Label style={{ margin: '10px' }}>Start Time</Label>
             <SliderWithTooltip
@@ -73,6 +70,14 @@ class VideoPreview extends Component {
               style={{ margin: '10px' }}
             />
           </SliderContainer>
+
+          <Label style={{ margin: '10px' }}>Width</Label>
+          <Button.Group>
+            <Button>100px</Button>
+            <Button>260px</Button>
+            <Button>360px</Button>
+            <Button>480px</Button>
+          </Button.Group>
         </Sliders>
         <div>
           <Segment>
@@ -107,6 +112,10 @@ const SliderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const SizeButton = styled(Button)`
+  margin: 10 0;
 `;
 
 export default VideoPreview;
