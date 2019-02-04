@@ -79,7 +79,7 @@ class VideoPreview extends Component {
             <Button>480px</Button>
           </Button.Group>
         </Sliders>
-        <div>
+        <div style={{ maxWidth: '50%', maxHeight: '50%' }}>
           <Segment>
             <ReactPlayer
               ref={this.ref}
@@ -87,6 +87,8 @@ class VideoPreview extends Component {
               onDuration={this.setVideoLength}
               playing
               muted
+              width='100%'
+              height='100%'
             />
           </Segment>
           <Button onClick={this.createGif}>Add a caption</Button>

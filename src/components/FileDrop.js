@@ -11,16 +11,18 @@ class FileDrop extends React.Component {
   };
   render() {
     return (
-      <Container>
-        <Segment placeholder>
-          <Header>1) Upload Video</Header>
-          <DropzoneContainer>
-            <Dropzone className='dropzone' onDrop={this.onDrop}>
-              <p>Drag video file here or click to browse</p>
-            </Dropzone>
-          </DropzoneContainer>
-        </Segment>
-      </Container>
+      <div>
+        <Container>
+          <Segment placeholder>
+            <Header>1) Upload Video</Header>
+            <DropzoneContainer>
+              <Dropzone className='dropzone' onDrop={this.onDrop}>
+                <p>Drag video file here or click to browse</p>
+              </Dropzone>
+            </DropzoneContainer>
+          </Segment>
+        </Container>
+      </div>
     );
   }
 }
