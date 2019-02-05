@@ -31,7 +31,8 @@ export const createGif = () => {
       text: store.captionText,
       fontColor: store.fontColor,
       textBaseline: store.baseline,
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      fontSize: store.fontSize
     },
     gif => {
       store.setGif(gif);

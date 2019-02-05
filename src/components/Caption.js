@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Segment, Form, Button } from 'semantic-ui-react';
+import { Header, Segment, Form, Button, Input } from 'semantic-ui-react';
 import { observer, inject } from 'mobx-react';
 
 import { createGif } from '../GifMaker';
@@ -10,11 +10,16 @@ class Caption extends React.Component {
   state = {
     caption: '',
     fontColor: '',
-    baseline: ''
+    baseline: '',
+    fontSize: 16
   };
 
   handleCaptionChange = event => {
     this.setState({ caption: event.target.value });
+  };
+
+  handleFontSizeChange = event => {
+    this.setState({ fontSize: event.target.value });
   };
 
   handleColorChange = event => {
@@ -26,10 +31,11 @@ class Caption extends React.Component {
   };
 
   handleSubmit = () => {
-    const { caption, fontColor, baseline } = this.state;
+    const { caption, fontColor, baseline, fontSize } = this.state;
     this.props.GifStore.setCaptionText(caption);
     this.props.GifStore.setFontColor(fontColor);
     this.props.GifStore.setBaseline(baseline);
+    this.props.GifStore.setFontSize(fontSize + 'px');
     createGif();
   };
 
@@ -72,6 +78,17 @@ class Caption extends React.Component {
               </Button>
             </Button.Group>
           </Form.Field>
+
+          <Form.Field>
+            <label>FontSize</label>
+            <Input
+              type='number'
+              label={{ basic: true, content: 'px' }}
+              labelPosition='right'
+              value={this.state.fontSize}
+              onChange={this.handleFontSizeChange}
+            />
+          </Form.Field>
           <Button type='submit'>Submit</Button>
         </Form>
       </Segment>
@@ -80,20 +97,3 @@ class Caption extends React.Component {
 }
 
 export default Caption;
-
-// handleItemClick = (e, { name }) => this.setState({ activeItem: name });
-
-// render() {
-//   const { activeItem } = this.state;
-
-//   return (
-//     <Menu stackable>
-//       <Menu.Item>QuickGif</Menu.Item>
-
-//       <Menu.Item
-//         name='Home'
-//         active={activeItem === 'home'}
-//         onClick={this.handleItemClick}
-//       >
-//         Home
-//       </Menu.Item>

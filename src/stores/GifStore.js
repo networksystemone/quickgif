@@ -9,6 +9,7 @@ class GifStore {
   @observable captionText = '';
   @observable fontColor = '#ffffff';
   @observable baseline = 'center';
+  @observable fontSize;
 
   get file() {
     return this.video;
@@ -42,6 +43,10 @@ class GifStore {
     return this.baseline;
   }
 
+  get fontSize() {
+    return this.fontSize;
+  }
+
   @action setDuration(duration) {
     this.duration = duration;
   }
@@ -72,6 +77,11 @@ class GifStore {
 
   @action setBaseline(baseline) {
     this.baseline = baseline;
+  }
+
+  @action setFontSize(fontSize) {
+    this.fontSize = fontSize;
+    console.log(this.fontSize);
   }
 }
 
