@@ -2,9 +2,11 @@ import { observable, action, computed } from 'mobx';
 
 class GifStore {
   @observable file = null;
+  @observable gifPreview = null;
   @observable gif = null;
   @observable duration;
   @observable startTime;
+  @observable captionText = '';
 
   get file() {
     return this.video;
@@ -18,8 +20,16 @@ class GifStore {
     return this.startTime;
   }
 
+  get gifPreview() {
+    return this.gifPreview;
+  }
+
   get gif() {
     return this.gif;
+  }
+
+  get captionText() {
+    return this.captionTexxt;
   }
 
   @action setDuration(duration) {
@@ -34,8 +44,16 @@ class GifStore {
     this.startTime = startTime;
   }
 
+  @action setGifPreview(gifPreview) {
+    this.gifPreview = gifPreview;
+  }
+
   @action setGif(gif) {
     this.gif = gif;
+  }
+
+  @action setCaptionText(captionText) {
+    this.captionText = captionText;
   }
 }
 

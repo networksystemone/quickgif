@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
+
 import FileDrop from '../components/FileDrop';
 import VideoPreview from '../components/VideoPreview';
+import Caption from '../components/Caption';
 
 @inject('GifStore')
 @observer
@@ -31,7 +33,7 @@ class CreateGifContainer extends Component {
       return <FileDrop file={this.handleFile} />;
     } else if (
       this.props.GifStore.file !== null &&
-      this.props.GifStore.gif === null
+      this.props.GifStore.gifPreview === null
     ) {
       return (
         <VideoPreview
@@ -40,6 +42,11 @@ class CreateGifContainer extends Component {
           duration={this.setDuration}
         />
       );
+    } else if (
+      this.props.GifStore.gifPreview !== null &&
+      this.props.GifStore.gif === null
+    ) {
+      return <Caption />;
     } else {
       return <div>{this.displayGif()}</div>;
     }

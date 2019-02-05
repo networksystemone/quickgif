@@ -9,6 +9,7 @@ class FileDrop extends React.Component {
   onDrop = file => {
     this.props.file(file[0].preview);
   };
+
   render() {
     return (
       <div>
