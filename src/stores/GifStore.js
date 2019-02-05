@@ -7,6 +7,8 @@ class GifStore {
   @observable duration;
   @observable startTime;
   @observable captionText = '';
+  @observable fontColor = '#ffffff';
+  @observable baseline = 'center';
 
   get file() {
     return this.video;
@@ -29,7 +31,15 @@ class GifStore {
   }
 
   get captionText() {
-    return this.captionTexxt;
+    return this.captionText;
+  }
+
+  get fontColor() {
+    return this.fontColor;
+  }
+
+  get baseline() {
+    return this.baseline;
   }
 
   @action setDuration(duration) {
@@ -54,6 +64,14 @@ class GifStore {
 
   @action setCaptionText(captionText) {
     this.captionText = captionText;
+  }
+
+  @action setFontColor(fontColor) {
+    this.fontColor = fontColor;
+  }
+
+  @action setBaseline(baseline) {
+    this.baseline = baseline;
   }
 }
 

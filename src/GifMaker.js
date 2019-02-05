@@ -10,7 +10,8 @@ export const createPreview = () => {
       numFrames: store.duration / 0.1,
       frameDuration: 1,
       offset: store.startTime,
-      text: store.captionText
+      text: store.captionText,
+      fontColor: store.fontColor
     },
     gif => {
       store.setGifPreview(gif);
@@ -27,7 +28,10 @@ export const createGif = () => {
       numFrames: store.duration / 0.1,
       frameDuration: 1,
       offset: store.startTime,
-      text: store.captionText
+      text: store.captionText,
+      fontColor: store.fontColor,
+      textBaseline: store.baseline,
+      fontWeight: 'bold'
     },
     gif => {
       store.setGif(gif);
