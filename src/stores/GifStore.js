@@ -2,14 +2,16 @@ import { observable, action, computed } from 'mobx';
 
 class GifStore {
   @observable file = null;
-  @observable gifPreview = null;
+
   @observable gif = null;
-  @observable duration;
-  @observable startTime;
+  @observable duration = null;
+  @observable startTime = null;
   @observable captionText = '';
   @observable fontColor = '#ffffff';
   @observable baseline = 'center';
   @observable fontSize;
+
+  @observable videoTrimmed = false;
 
   get file() {
     return this.video;
@@ -21,10 +23,6 @@ class GifStore {
 
   get startTime() {
     return this.startTime;
-  }
-
-  get gifPreview() {
-    return this.gifPreview;
   }
 
   get gif() {
@@ -47,6 +45,10 @@ class GifStore {
     return this.fontSize;
   }
 
+  get videoTrimmed() {
+    return this.videoTrimmed;
+  }
+
   @action setDuration(duration) {
     this.duration = duration;
   }
@@ -59,8 +61,8 @@ class GifStore {
     this.startTime = startTime;
   }
 
-  @action setGifPreview(gifPreview) {
-    this.gifPreview = gifPreview;
+  @action setVideoTrimmed() {
+    this.videoTrimmed = true;
   }
 
   @action setGif(gif) {
@@ -82,6 +84,13 @@ class GifStore {
   @action setFontSize(fontSize) {
     this.fontSize = fontSize;
     console.log(this.fontSize);
+  }
+
+  @computed get fileUploaded() {
+    if (this.file !== null) {
+      return true;
+    }
+    return false;
   }
 }
 

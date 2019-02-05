@@ -29,12 +29,10 @@ class CreateGifContainer extends Component {
   };
 
   render() {
-    if (this.props.GifStore.file === null) {
+    const { fileUploaded, videoTrimmed, gif } = this.props.GifStore;
+    if (!fileUploaded) {
       return <FileDrop file={this.handleFile} />;
-    } else if (
-      this.props.GifStore.file !== null &&
-      this.props.GifStore.gifPreview === null
-    ) {
+    } else if (fileUploaded && !videoTrimmed) {
       return (
         <VideoPreview
           source={this.props.GifStore.file}
@@ -42,10 +40,7 @@ class CreateGifContainer extends Component {
           duration={this.setDuration}
         />
       );
-    } else if (
-      this.props.GifStore.gifPreview !== null &&
-      this.props.GifStore.gif === null
-    ) {
+    } else if (videoTrimmed && gif === null) {
       return <Caption />;
     } else {
       return <div>{this.displayGif()}</div>;

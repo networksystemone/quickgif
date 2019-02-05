@@ -1,24 +1,6 @@
 import gifshot from 'gifshot';
 import store from './stores/GifStore';
 
-export const createPreview = () => {
-  gifshot.createGIF(
-    {
-      video: store.file,
-      gifWidth: 360,
-      gifHeight: 202,
-      numFrames: store.duration / 0.1,
-      frameDuration: 1,
-      offset: store.startTime,
-      text: store.captionText,
-      fontColor: store.fontColor
-    },
-    gif => {
-      store.setGifPreview(gif);
-    }
-  );
-};
-
 export const createGif = () => {
   gifshot.createGIF(
     {
@@ -36,6 +18,7 @@ export const createGif = () => {
     },
     gif => {
       store.setGif(gif);
+      console.log(gif);
     }
   );
 };

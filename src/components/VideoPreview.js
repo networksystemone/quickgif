@@ -4,13 +4,14 @@ import styled from 'styled-components';
 import { string } from 'prop-types';
 import ReactPlayer from 'react-player';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
-
-import { createPreview } from '../GifMaker';
+import { observer, inject } from 'mobx-react';
 
 import 'rc-slider/assets/index.css';
 
 const SliderWithTooltip = createSliderWithTooltip(Slider);
 
+@inject('GifStore')
+@observer
 class VideoPreview extends Component {
   static propTypes = {
     source: string
@@ -40,12 +41,8 @@ class VideoPreview extends Component {
   handleDurationChange = value => {
     this.props.duration(value);
   };
-
-  createGif = () => {
-    createPreview();
-  };
-
   render() {
+    const { GifStore } = this.props;
     return (
       <Container>
         <Sliders>
@@ -91,7 +88,9 @@ class VideoPreview extends Component {
               height='100%'
             />
           </Segment>
-          <Button onClick={this.createGif}>Add a caption</Button>
+          <Button onClick={() => GifStore.setVideoTrimmed()}>
+            Add a caption
+          </Button>
         </div>
       </Container>
     );
