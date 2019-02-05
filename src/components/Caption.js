@@ -16,26 +16,25 @@ class Caption extends React.Component {
 
   handleCaptionChange = event => {
     this.setState({ caption: event.target.value });
+    this.props.GifStore.setCaptionText(event.target.value);
   };
 
   handleFontSizeChange = event => {
     this.setState({ fontSize: event.target.value });
+    this.props.GifStore.setFontSize(event.target.value + 'px');
   };
 
   handleColorChange = event => {
     this.setState({ fontColor: event.target.value });
+    this.props.GifStore.setFontColor(event.target.value);
   };
 
   handleBaseline = event => {
     this.setState({ baseline: event.target.value });
+    this.props.GifStore.setBaseline(event.target.value);
   };
 
   handleSubmit = () => {
-    const { caption, fontColor, baseline, fontSize } = this.state;
-    this.props.GifStore.setCaptionText(caption);
-    this.props.GifStore.setFontColor(fontColor);
-    this.props.GifStore.setBaseline(baseline);
-    this.props.GifStore.setFontSize(fontSize + 'px');
     createGif();
   };
 

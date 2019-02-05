@@ -2,7 +2,6 @@ import { observable, action, computed } from 'mobx';
 
 class GifStore {
   @observable file = null;
-
   @observable gif = null;
   @observable duration = null;
   @observable startTime = null;
@@ -10,7 +9,6 @@ class GifStore {
   @observable fontColor = '#ffffff';
   @observable baseline = 'center';
   @observable fontSize;
-
   @observable videoTrimmed = false;
 
   get file() {
