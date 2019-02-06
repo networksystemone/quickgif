@@ -31,77 +31,97 @@ class Caption extends React.Component {
     createGif();
   };
 
+  displayGif = () => {
+    const { gif } = this.props.GifStore;
+    if (gif) {
+      return (
+        <div>
+          <img src={this.props.GifStore.gif.image} alt='gifImg' />
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <p>gif preview</p>
+        </div>
+      );
+    }
+  };
+
   render() {
     const { caption, fontSize, fontColor, baseline } = this.props.GifStore;
     return (
-      <SegementStyled>
-        <Header>3) Add a caption</Header>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Field>
-            <label>Caption</label>
-            <Input value={caption} onChange={this.handleCaptionChange} />
-          </Form.Field>
+      <div>
+        {this.displayGif()}
+        <SegementStyled>
+          <Header>3) Add a caption</Header>
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Field>
+              <label>Caption</label>
+              <Input value={caption} onChange={this.handleCaptionChange} />
+            </Form.Field>
 
-          <Form.Field>
-            <label>Text Color</label>
-            <Button.Group>
-              <Button
-                active={fontColor === '#000000'}
-                value='#000000'
-                onClick={this.handleColorChange}
-              >
-                Black
-              </Button>
-              <Button
-                active={fontColor === '#ffffff'}
-                value='#ffffff'
-                onClick={this.handleColorChange}
-              >
-                White
-              </Button>
-            </Button.Group>
-          </Form.Field>
+            <Form.Field>
+              <label>Text Color</label>
+              <Button.Group>
+                <Button
+                  active={fontColor === '#000000'}
+                  value='#000000'
+                  onClick={this.handleColorChange}
+                >
+                  Black
+                </Button>
+                <Button
+                  active={fontColor === '#ffffff'}
+                  value='#ffffff'
+                  onClick={this.handleColorChange}
+                >
+                  White
+                </Button>
+              </Button.Group>
+            </Form.Field>
 
-          <Form.Field>
-            <label>Baseline</label>
-            <Button.Group>
-              <Button
-                active={baseline === 'bottom'}
-                value='bottom'
-                onClick={this.handleBaseline}
-              >
-                Bottom
-              </Button>
-              <Button
-                active={baseline === 'center'}
-                value='center'
-                onClick={this.handleBaseline}
-              >
-                Center
-              </Button>
-              <Button
-                active={baseline === 'top'}
-                value='top'
-                onClick={this.handleBaseline}
-              >
-                Top
-              </Button>
-            </Button.Group>
-          </Form.Field>
+            <Form.Field>
+              <label>Baseline</label>
+              <Button.Group>
+                <Button
+                  active={baseline === 'bottom'}
+                  value='bottom'
+                  onClick={this.handleBaseline}
+                >
+                  Bottom
+                </Button>
+                <Button
+                  active={baseline === 'center'}
+                  value='center'
+                  onClick={this.handleBaseline}
+                >
+                  Center
+                </Button>
+                <Button
+                  active={baseline === 'top'}
+                  value='top'
+                  onClick={this.handleBaseline}
+                >
+                  Top
+                </Button>
+              </Button.Group>
+            </Form.Field>
 
-          <Form.Field>
-            <label>FontSize</label>
-            <Input
-              type='number'
-              label={{ basic: true, content: 'px' }}
-              labelPosition='right'
-              value={fontSize}
-              onChange={this.handleFontSizeChange}
-            />
-          </Form.Field>
-          <Button type='submit'>Submit</Button>
-        </Form>
-      </SegementStyled>
+            <Form.Field>
+              <label>FontSize</label>
+              <Input
+                type='number'
+                label={{ basic: true, content: 'px' }}
+                labelPosition='right'
+                value={fontSize}
+                onChange={this.handleFontSizeChange}
+              />
+            </Form.Field>
+            <Button type='submit'>Preview</Button>
+          </Form>
+        </SegementStyled>
+      </div>
     );
   }
 }
