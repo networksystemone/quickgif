@@ -17,8 +17,8 @@ export const createGif = () => {
       fontSize: store.fontSize + 'px'
     },
     gif => {
-      store.setGif(gif);
-      console.log(gif);
+      store.setGif(gif.image);
+      console.log(gif.image);
     }
   );
 };

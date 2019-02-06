@@ -36,13 +36,15 @@ class Caption extends React.Component {
     if (gif) {
       return (
         <div>
-          <img src={this.props.GifStore.gif.image} alt='gifImg' />
+          <img src={gif} alt='gifImg' />
         </div>
       );
     } else {
       return (
         <div>
-          <p>gif preview</p>
+          <Segment placeholder>
+            <Header icon>Gif preview here </Header>
+          </Segment>
         </div>
       );
     }
@@ -52,7 +54,6 @@ class Caption extends React.Component {
     const { caption, fontSize, fontColor, baseline } = this.props.GifStore;
     return (
       <div>
-        {this.displayGif()}
         <SegementStyled>
           <Header>3) Add a caption</Header>
           <Form onSubmit={this.handleSubmit}>
@@ -121,6 +122,7 @@ class Caption extends React.Component {
             <Button type='submit'>Preview</Button>
           </Form>
         </SegementStyled>
+        {this.displayGif()}
       </div>
     );
   }

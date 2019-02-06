@@ -20,14 +20,6 @@ class CreateGifContainer extends Component {
     this.props.GifStore.setStartTime(startTime);
   };
 
-  displayGif = () => {
-    return (
-      <div>
-        <img src={this.props.GifStore.gif.image} alt='gifImg' />
-      </div>
-    );
-  };
-
   render() {
     const { fileUploaded, videoTrimmed } = this.props.GifStore;
     if (!fileUploaded) {
