@@ -7,31 +7,24 @@ import { createGif } from '../GifMaker';
 @inject('GifStore')
 @observer
 class Caption extends React.Component {
-  state = {
-    caption: '',
-    fontColor: '',
-    baseline: '',
-    fontSize: 16
+  handleCaptionChange = e => {
+    e.preventDefault();
+    this.props.GifStore.setCaptionText(e.target.value);
   };
 
-  handleCaptionChange = event => {
-    this.setState({ caption: event.target.value });
-    this.props.GifStore.setCaptionText(event.target.value);
+  handleFontSizeChange = e => {
+    e.preventDefault();
+    this.props.GifStore.setFontSize(e.target.value);
   };
 
-  handleFontSizeChange = event => {
-    this.setState({ fontSize: event.target.value });
-    this.props.GifStore.setFontSize(event.target.value + 'px');
+  handleColorChange = e => {
+    e.preventDefault();
+    this.props.GifStore.setFontColor(e.target.value);
   };
 
-  handleColorChange = event => {
-    this.setState({ fontColor: event.target.value });
-    this.props.GifStore.setFontColor(event.target.value);
-  };
-
-  handleBaseline = event => {
-    this.setState({ baseline: event.target.value });
-    this.props.GifStore.setBaseline(event.target.value);
+  handleBaseline = e => {
+    e.preventDefault();
+    this.props.GifStore.setBaseline(e.target.value);
   };
 
   handleSubmit = () => {
@@ -39,16 +32,14 @@ class Caption extends React.Component {
   };
 
   render() {
+    const { caption, fontSize } = this.props.GifStore;
     return (
       <Segment placeholder>
         <Header>3) Add a caption</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
             <label>Caption</label>
-            <input
-              value={this.state.caption}
-              onChange={this.handleCaptionChange}
-            />
+            <Input value={caption} onChange={this.handleCaptionChange} />
           </Form.Field>
 
           <Form.Field>
@@ -84,7 +75,7 @@ class Caption extends React.Component {
               type='number'
               label={{ basic: true, content: 'px' }}
               labelPosition='right'
-              value={this.state.fontSize}
+              value={fontSize}
               onChange={this.handleFontSizeChange}
             />
           </Form.Field>

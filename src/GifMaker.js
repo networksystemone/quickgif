@@ -14,7 +14,7 @@ export const createGif = () => {
       fontColor: store.fontColor,
       textBaseline: store.baseline,
       fontWeight: 'bold',
-      fontSize: store.fontSize
+      fontSize: store.fontSize + 'px'
     },
     gif => {
       store.setGif(gif);

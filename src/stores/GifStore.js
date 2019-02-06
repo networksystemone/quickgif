@@ -8,7 +8,7 @@ class GifStore {
   @observable captionText = '';
   @observable fontColor = '#ffffff';
   @observable baseline = 'center';
-  @observable fontSize;
+  @observable fontSize = 16;
   @observable videoTrimmed = false;
 
   get file() {
