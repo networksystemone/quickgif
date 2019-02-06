@@ -32,7 +32,7 @@ class Caption extends React.Component {
   };
 
   render() {
-    const { caption, fontSize } = this.props.GifStore;
+    const { caption, fontSize, fontColor, baseline } = this.props.GifStore;
     return (
       <Segment placeholder>
         <Header>3) Add a caption</Header>
@@ -45,10 +45,18 @@ class Caption extends React.Component {
           <Form.Field>
             <label>Text Color</label>
             <Button.Group>
-              <Button value='#000000' onClick={this.handleColorChange}>
+              <Button
+                active={fontColor === '#000000'}
+                value='#000000'
+                onClick={this.handleColorChange}
+              >
                 Black
               </Button>
-              <Button value='#ffffff' onClick={this.handleColorChange}>
+              <Button
+                active={fontColor === '#ffffff'}
+                value='#ffffff'
+                onClick={this.handleColorChange}
+              >
                 White
               </Button>
             </Button.Group>
@@ -57,13 +65,25 @@ class Caption extends React.Component {
           <Form.Field>
             <label>Baseline</label>
             <Button.Group>
-              <Button value='bottom' onClick={this.handleBaseline}>
+              <Button
+                active={baseline === 'bottom'}
+                value='bottom'
+                onClick={this.handleBaseline}
+              >
                 Bottom
               </Button>
-              <Button value='center' onClick={this.handleBaseline}>
+              <Button
+                active={baseline === 'center'}
+                value='center'
+                onClick={this.handleBaseline}
+              >
                 Center
               </Button>
-              <Button value='top' onClick={this.handleBaseline}>
+              <Button
+                active={baseline === 'top'}
+                value='top'
+                onClick={this.handleBaseline}
+              >
                 Top
               </Button>
             </Button.Group>
