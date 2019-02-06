@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header, Segment, Form, Button, Input } from 'semantic-ui-react';
 import { observer, inject } from 'mobx-react';
-
+import styled from 'styled-components';
 import { createGif } from '../GifMaker';
 
 @inject('GifStore')
@@ -34,7 +34,7 @@ class Caption extends React.Component {
   render() {
     const { caption, fontSize, fontColor, baseline } = this.props.GifStore;
     return (
-      <Segment placeholder>
+      <SegementStyled>
         <Header>3) Add a caption</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
@@ -101,9 +101,15 @@ class Caption extends React.Component {
           </Form.Field>
           <Button type='submit'>Submit</Button>
         </Form>
-      </Segment>
+      </SegementStyled>
     );
   }
 }
 
+const SegementStyled = styled(Segment)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
 export default Caption;
