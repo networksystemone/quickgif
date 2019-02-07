@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Segment, Header, Label, Button } from 'semantic-ui-react';
+import { Segment, Button } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { string } from 'prop-types';
 import ReactPlayer from 'react-player';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
 import { observer, inject } from 'mobx-react';
-
 import 'rc-slider/assets/index.css';
 
 const SliderWithTooltip = createSliderWithTooltip(Slider);
@@ -45,38 +44,11 @@ class VideoPreview extends Component {
     const { GifStore } = this.props;
     return (
       <Container>
-        <Sliders>
-          <Header>2) Trim your video and select width</Header>
-          <SliderContainer>
-            <Label style={{ margin: '10px' }}>Start Time</Label>
-            <SliderWithTooltip
-              tipFormatter={this.secondsFormatter}
-              min={0}
-              max={this.state.videoLength}
-              onChange={this.handleStartChange}
-              style={{ margin: '10px' }}
-            />
-          </SliderContainer>
-          <SliderContainer>
-            <Label style={{ margin: '10px' }}>Duration</Label>
-            <SliderWithTooltip
-              tipFormatter={this.secondsFormatter}
-              min={1}
-              max={15}
-              onChange={this.handleDurationChange}
-              style={{ margin: '10px' }}
-            />
-          </SliderContainer>
-
-          <Label style={{ margin: '10px' }}>Width</Label>
-          <Button.Group>
-            <Button>100px</Button>
-            <Button>260px</Button>
-            <Button>360px</Button>
-            <Button>480px</Button>
-          </Button.Group>
-        </Sliders>
-        <div style={{ maxWidth: '50%', maxHeight: '50%' }}>
+        <Wrapper className='gray'>
+          <h2 className='f4 f3-l fw2  ma1'>Looks great!</h2>
+          <h2 className='f5 f4-l fw2  ma1'>
+            Let's trim the video to the spot and duration you want
+          </h2>
           <Segment>
             <ReactPlayer
               ref={this.ref}
@@ -88,24 +60,48 @@ class VideoPreview extends Component {
               height='100%'
             />
           </Segment>
-          <Button onClick={() => GifStore.setVideoTrimmed()}>
+          <Segment>
+            <SliderContainer>
+              <label style={{ margin: '10px' }}>Start Time</label>
+              <SliderWithTooltip
+                tipFormatter={this.secondsFormatter}
+                min={0}
+                max={this.state.videoLength}
+                onChange={this.handleStartChange}
+                style={{ margin: '10px' }}
+              />
+            </SliderContainer>
+            <SliderContainer>
+              <label style={{ margin: '10px' }}>Duration</label>
+              <SliderWithTooltip
+                tipFormatter={this.secondsFormatter}
+                min={1}
+                max={15}
+                onChange={this.handleDurationChange}
+                style={{ margin: '10px' }}
+              />
+            </SliderContainer>
+          </Segment>
+          <Button color={'teal'} onClick={() => GifStore.setVideoTrimmed()}>
             Add a caption
           </Button>
-        </div>
+        </Wrapper>
       </Container>
     );
   }
 }
 
-const Container = styled.div`
+const Wrapper = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  flex-direction: column;
   text-align: center;
+  max-width: 600px;
+  margin: 1rem;
 `;
 
-const Sliders = styled(Segment)`
-  min-width: 400px;
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 const SliderContainer = styled.div`

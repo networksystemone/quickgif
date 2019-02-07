@@ -19,23 +19,19 @@ class Navbar extends React.Component {
           <a
             className='link dim dark-gray f6 f5-ns dib mr3 mr4-ns'
             href='#'
-            title='About'
+            title='Home'
           >
-            Services
+            Home
           </a>
           <a
             className='link dim dark-gray f6 f5-ns dib mr3 mr4-ns'
             href='#'
-            title='Store'
+            title='Create'
           >
-            Blog
+            Make a Gif
           </a>
-          <a
-            className='link dim dark-gray f6 f5-ns dib'
-            href='#'
-            title='Contact'
-          >
-            Join Us
+          <a className='link dim dark-gray f6 f5-ns dib' href='#' title='About'>
+            About
           </a>
         </div>
       </nav>
