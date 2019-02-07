@@ -76,7 +76,7 @@ class VideoPreview extends Component {
               <SliderWithTooltip
                 tipFormatter={this.secondsFormatter}
                 min={1}
-                max={15}
+                max={this.state.videoLength}
                 onChange={this.handleDurationChange}
                 style={{ margin: '10px' }}
               />
@@ -102,10 +102,11 @@ const Wrapper = styled.div`
 const Container = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 2rem;
 `;
 
 const SliderContainer = styled.div`
-  margin: 10px;
+  margin: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
