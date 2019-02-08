@@ -20,7 +20,6 @@ export const createGif = () => {
         store.setBuildInProgress(true);
       }
     },
-
     gif => {
       store.setGif(gif.image);
       store.setBuildInProgress(false);
