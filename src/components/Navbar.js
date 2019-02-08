@@ -6,20 +6,6 @@ class Navbar extends React.Component {
       <nav className='dt w-100 border-box pa3 ph5-ns bb b--light-gray avenir'>
         <p className='dtc v-mid mid-gray link'>Quick Gif</p>
         <div className='dtc v-mid w-75 tr'>
-          <a
-            className='link dim dark-gray f6 f5-ns dib mr3 mr4-ns'
-            href='#'
-            title='Home'
-          >
-            Home
-          </a>
-          <a
-            className='link dim dark-gray f6 f5-ns dib mr3 mr4-ns'
-            href='#'
-            title='Create'
-          >
-            Make a Gif
-          </a>
           <a className='link dim dark-gray f6 f5-ns dib' href='#' title='About'>
             View Source
           </a>
