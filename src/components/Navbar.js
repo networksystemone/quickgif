@@ -1,10 +1,6 @@
 import React from 'react';
 
 class Navbar extends React.Component {
-  onDrop = file => {
-    this.props.file(file[0].preview);
-  };
-
   render() {
     return (
       <nav className='dt w-100 border-box pa3 ph5-ns bb b--light-gray'>

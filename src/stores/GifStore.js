@@ -10,6 +10,8 @@ class GifStore {
   @observable baseline = 'center';
   @observable fontSize = 16;
   @observable videoTrimmed = false;
+  @observable progress = 0;
+  @observable buildInProgress = false;
 
   get file() {
     return this.video;
@@ -47,6 +49,14 @@ class GifStore {
     return this.videoTrimmed;
   }
 
+  get progress() {
+    return this.progress;
+  }
+
+  get buildInProgress() {
+    return this.buildInProgress;
+  }
+
   @action setDuration(duration) {
     this.duration = duration;
   }
@@ -81,7 +91,14 @@ class GifStore {
 
   @action setFontSize(fontSize) {
     this.fontSize = fontSize;
-    console.log(this.fontSize);
+  }
+
+  @action setProgress(progress) {
+    this.progress = progress;
+  }
+
+  @action setBuildInProgress(buildInProgress) {
+    this.buildInProgress = buildInProgress;
   }
 
   @computed get fileUploaded() {

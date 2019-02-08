@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment, Button, Icon } from 'semantic-ui-react';
+import { Segment, Button } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { string } from 'prop-types';
 import ReactPlayer from 'react-player';

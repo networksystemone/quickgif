@@ -14,11 +14,16 @@ export const createGif = () => {
       fontColor: store.fontColor,
       textBaseline: store.baseline,
       fontWeight: 'bold',
-      fontSize: store.fontSize + 'px'
+      fontSize: store.fontSize + 'px',
+      progressCallback: captureProgress => {
+        store.setProgress(captureProgress);
+        store.setBuildInProgress(true);
+      }
     },
+
     gif => {
       store.setGif(gif.image);
-      console.log(gif.image);
+      store.setBuildInProgress(false);
     }
   );
 };

@@ -1,5 +1,12 @@
 import React from 'react';
-import { Icon, Segment, Form, Button, Input } from 'semantic-ui-react';
+import {
+  Icon,
+  Segment,
+  Form,
+  Button,
+  Input,
+  Progress
+} from 'semantic-ui-react';
 import { observer, inject } from 'mobx-react';
 import styled from 'styled-components';
 import { createGif } from '../GifMaker';
@@ -28,16 +35,23 @@ class Caption extends React.Component {
   };
 
   handleSubmit = () => {
+    // trigger build in process
     createGif();
   };
 
   displayGif = () => {
-    const { gif } = this.props.GifStore;
-    if (gif) {
+    const { gif, buildInProgress, progress } = this.props.GifStore;
+    if (buildInProgress) {
       return (
-        <div>
+        <Segment placeholder>
+          <Progress percent={progress * 100} />
+        </Segment>
+      );
+    } else if (gif) {
+      return (
+        <Segment placeholder>
           <img src={gif} alt='gifImg' />
-        </div>
+        </Segment>
       );
     } else {
       return (
@@ -132,7 +146,7 @@ class Caption extends React.Component {
             </Form>
           </Segment>
           <Button color={'teal'}>
-            <Icon name='download' color='white' /> Download Gif
+            <Icon name='download' /> Download Gif
           </Button>
         </Wrapper>
       </Container>
