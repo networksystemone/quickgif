@@ -1,15 +1,9 @@
 import React from 'react';
-import {
-  Icon,
-  Segment,
-  Form,
-  Button,
-  Input,
-  Progress
-} from 'semantic-ui-react';
+import { Icon, Segment, Form, Button, Input } from 'semantic-ui-react';
 import { observer, inject } from 'mobx-react';
 import styled from 'styled-components';
 import { createGif } from '../GifMaker';
+import GifDisplay from '../components/GifDisplay';
 
 @inject('GifStore')
 @observer
@@ -35,35 +29,7 @@ class Caption extends React.Component {
   };
 
   handleSubmit = () => {
-    // trigger build in process
     createGif();
-  };
-
-  displayGif = () => {
-    const { gif, buildInProgress, progress } = this.props.GifStore;
-    if (buildInProgress) {
-      return (
-        <Segment placeholder>
-          <Progress percent={progress * 100} />
-        </Segment>
-      );
-    } else if (gif) {
-      return (
-        <Segment placeholder>
-          <img src={gif} alt='gifImg' />
-        </Segment>
-      );
-    } else {
-      return (
-        <div className='mb2'>
-          <Segment placeholder>
-            <h2 className='f4 f3-l fw2  ma1'>
-              Click "Preview" to see your gif
-            </h2>
-          </Segment>
-        </div>
-      );
-    }
   };
 
   render() {
@@ -76,7 +42,7 @@ class Caption extends React.Component {
             Click "preview" when you're ready to see your changes
           </h2>
           <Segment>
-            {this.displayGif()}
+            <GifDisplay />
             <Form onSubmit={this.handleSubmit}>
               <Form.Field>
                 <label>Caption</label>

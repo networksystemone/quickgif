@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 
 import FileDrop from '../components/FileDrop';
-import VideoPreview from '../components/VideoPreview';
-import Caption from '../components/Caption';
+import VideoPreview from './VideoPreviewContainer';
+import Caption from './CreateCaptionContainer';
 
 @inject('GifStore')
 @observer

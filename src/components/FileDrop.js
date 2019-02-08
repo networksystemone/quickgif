@@ -3,8 +3,6 @@ import { Segment, Icon } from 'semantic-ui-react';
 import styled from 'styled-components';
 import Dropzone from 'react-dropzone';
 
-// import './FileDrop.css';
-
 class FileDrop extends React.Component {
   onDrop = file => {
     this.props.file(file[0].preview);
