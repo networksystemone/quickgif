@@ -3,14 +3,8 @@ import React from 'react';
 class Navbar extends React.Component {
   render() {
     return (
-      <nav className='dt w-100 border-box pa3 ph5-ns bb b--light-gray'>
-        <a className='dtc v-mid mid-gray link dim w-25' href='#' title='Home'>
-          <img
-            src='http://tachyons.io/img/logo.jpg'
-            className='dib w2 h2 br-100'
-            alt='Site Name'
-          />
-        </a>
+      <nav className='dt w-100 border-box pa3 ph5-ns bb b--light-gray avenir'>
+        <p className='dtc v-mid mid-gray link'>Quick Gif</p>
         <div className='dtc v-mid w-75 tr'>
           <a
             className='link dim dark-gray f6 f5-ns dib mr3 mr4-ns'
@@ -27,7 +21,7 @@ class Navbar extends React.Component {
             Make a Gif
           </a>
           <a className='link dim dark-gray f6 f5-ns dib' href='#' title='About'>
-            About
+            View Source
           </a>
         </div>
       </nav>
