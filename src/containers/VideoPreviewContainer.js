@@ -5,6 +5,7 @@ import { string } from 'prop-types';
 import ReactPlayer from 'react-player';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
 import { observer, inject } from 'mobx-react';
+import { createGif } from '../util/GifMaker';
 import 'rc-slider/assets/index.css';
 
 const SliderWithTooltip = createSliderWithTooltip(Slider);
@@ -40,8 +41,12 @@ class VideoPreview extends Component {
   handleDurationChange = value => {
     this.props.duration(value);
   };
+
+  handleAddCaption = () => {
+    this.props.GifStore.setVideoTrimmed();
+    createGif();
+  };
   render() {
-    const { GifStore } = this.props;
     return (
       <Container>
         <Wrapper className='gray'>
@@ -82,7 +87,7 @@ class VideoPreview extends Component {
               />
             </SliderContainer>
           </Segment>
-          <Button color={'teal'} onClick={() => GifStore.setVideoTrimmed()}>
+          <Button color={'teal'} onClick={this.handleAddCaption}>
             Add a caption
           </Button>
         </Wrapper>

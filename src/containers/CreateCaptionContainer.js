@@ -38,6 +38,7 @@ class Caption extends React.Component {
 
   render() {
     const { caption, fontSize, fontColor, baseline } = this.props.GifStore;
+
     return (
       <Container>
         <Wrapper className='gray'>
