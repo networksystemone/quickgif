@@ -109,6 +109,20 @@ class GifStore {
   @action setGifComplete(gifComplete) {
     this.gifComplete = gifComplete;
   }
+  @action reset() {
+    this.file = null;
+    this.gif = null;
+    this.duration = 1;
+    this.startTime = 0;
+    this.captionText = '';
+    this.fontColor = '#ffffff';
+    this.baseline = 'center';
+    this.fontSize = 16;
+    this.videoTrimmed = false;
+    this.progress = 0;
+    this.buildInProgress = false;
+    this.gifComplete = false;
+  }
 
   @computed get fileUploaded() {
     if (this.file !== null) {

@@ -14,6 +14,10 @@ class DownloadGif extends Component {
     FileSaver.saveAs(blob, 'quick.gif');
   };
 
+  resetStore = () => {
+    this.props.GifStore.reset();
+  };
+
   render() {
     const { gif } = this.props.GifStore;
     return (
@@ -25,7 +29,7 @@ class DownloadGif extends Component {
         <Segment>
           <img src={gif} alt='gifImg' />
           <ButtonWrapper>
-            <Button>Create Another</Button>
+            <Button onClick={this.resetStore}>Create Another</Button>
             <Button onClick={this.saveGif} color={'teal'}>
               Download Gif
             </Button>
