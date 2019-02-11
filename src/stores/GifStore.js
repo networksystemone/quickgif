@@ -12,6 +12,7 @@ class GifStore {
   @observable videoTrimmed = false;
   @observable progress = 0;
   @observable buildInProgress = false;
+  @observable gifComplete = false;
 
   get file() {
     return this.video;
@@ -57,6 +58,10 @@ class GifStore {
     return this.buildInProgress;
   }
 
+  get gifComplete() {
+    return this.gifComplete;
+  }
+
   @action setDuration(duration) {
     this.duration = duration;
   }
@@ -99,6 +104,10 @@ class GifStore {
 
   @action setBuildInProgress(buildInProgress) {
     this.buildInProgress = buildInProgress;
+  }
+
+  @action setGifComplete(gifComplete) {
+    this.gifComplete = gifComplete;
   }
 
   @computed get fileUploaded() {

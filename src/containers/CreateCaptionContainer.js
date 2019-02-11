@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Segment, Form, Button, Input } from 'semantic-ui-react';
+import { Segment, Form, Button, Input } from 'semantic-ui-react';
 import { observer, inject } from 'mobx-react';
 import styled from 'styled-components';
 import { createGif } from '../GifMaker';
@@ -30,6 +30,10 @@ class Caption extends React.Component {
 
   handleSubmit = () => {
     createGif();
+  };
+
+  downloadFile = () => {
+    this.props.GifStore.setGifComplete(true);
   };
 
   render() {
@@ -111,8 +115,8 @@ class Caption extends React.Component {
               </Button>
             </Form>
           </Segment>
-          <Button color={'teal'}>
-            <Icon name='download' /> Download Gif
+          <Button onClick={this.downloadFile} color={'teal'}>
+            Download
           </Button>
         </Wrapper>
       </Container>
