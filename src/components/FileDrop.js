@@ -22,7 +22,7 @@ class FileDrop extends React.Component {
     if (fileIsWrongType) {
       return (
         <Message negative>
-          <Message.Header>Wrong file type</Message.Header>
+          <Message.Header>Oops! Wrong file type</Message.Header>
           <p>Please select a .mp4 video file</p>
         </Message>
       );
