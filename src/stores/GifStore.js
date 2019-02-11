@@ -3,8 +3,8 @@ import { observable, action, computed } from 'mobx';
 class GifStore {
   @observable file = null;
   @observable gif = null;
-  @observable duration = null;
-  @observable startTime = null;
+  @observable duration = 1;
+  @observable startTime = 0;
   @observable captionText = '';
   @observable fontColor = '#ffffff';
   @observable baseline = 'center';
