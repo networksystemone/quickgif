@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Segment, Button } from 'semantic-ui-react';
 import styled from 'styled-components';
-import { string } from 'prop-types';
 import ReactPlayer from 'react-player';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
 import { observer, inject } from 'mobx-react';
@@ -13,10 +12,6 @@ const SliderWithTooltip = createSliderWithTooltip(Slider);
 @inject('GifStore')
 @observer
 class VideoPreview extends Component {
-  static propTypes = {
-    source: string
-  };
-
   state = {
     videoLength: 0
   };
