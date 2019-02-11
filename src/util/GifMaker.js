@@ -1,5 +1,5 @@
 import gifshot from 'gifshot';
-import store from './stores/GifStore';
+import store from '../stores/GifStore';
 
 export const createGif = () => {
   gifshot.createGIF(

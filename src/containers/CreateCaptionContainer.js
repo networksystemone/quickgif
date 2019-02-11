@@ -2,7 +2,7 @@ import React from 'react';
 import { Segment, Form, Button, Input } from 'semantic-ui-react';
 import { observer, inject } from 'mobx-react';
 import styled from 'styled-components';
-import { createGif } from '../GifMaker';
+import { createGif } from '../util/GifMaker';
 import GifDisplay from '../components/GifDisplay';
 
 @inject('GifStore')
