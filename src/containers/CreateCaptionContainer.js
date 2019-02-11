@@ -116,7 +116,7 @@ class Caption extends React.Component {
             </Form>
           </Segment>
           <Button onClick={this.downloadFile} color={'teal'}>
-            Download
+            Finish
           </Button>
         </Wrapper>
       </Container>
