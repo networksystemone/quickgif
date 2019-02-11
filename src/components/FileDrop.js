@@ -1,32 +1,52 @@
 import React from 'react';
-import { Segment, Icon } from 'semantic-ui-react';
+import { Segment, Icon, Message } from 'semantic-ui-react';
 import styled from 'styled-components';
 import Dropzone from 'react-dropzone';
 
 class FileDrop extends React.Component {
+  state = {
+    fileIsWrongType: false
+  };
+
   onDrop = file => {
-    this.props.file(file[0].preview);
+    if (file[0].type === 'video/mp4') {
+      this.props.file(file[0].preview);
+    } else {
+      this.setState({ fileIsWrongType: true });
+    }
+  };
+
+  renderError = () => {
+    const { fileIsWrongType } = this.state;
+
+    if (fileIsWrongType) {
+      return (
+        <Message negative>
+          <Message.Header>Wrong file type</Message.Header>
+          <p>Please select a .mp4 video file</p>
+        </Message>
+      );
+    }
   };
 
   render() {
     return (
-      <div>
-        <Container>
-          <h2 className='f4 f3-l fw2 gray ma1 '>Let's get you started.</h2>
-          <h2 className='f4 f3-l fw2 gray ma1  '>Choose your video file</h2>
-          <Segment>
-            <DropzoneContainer>
-              <Dropzone className='dropzone' onDrop={this.onDrop}>
-                <h2 className='f5 f4-l fw1 gray ma1 '>MP4 Video File</h2>
-                <h2 className='f6 f5-l fw1 gray mb3 ma1 '>
-                  Drag video file here or click to browse
-                </h2>
-                <Icon name='file video' size='huge' color='teal' />
-              </Dropzone>
-            </DropzoneContainer>
-          </Segment>
-        </Container>
-      </div>
+      <Container>
+        <h2 className='f4 f3-l fw2 gray ma1 '>Let's get you started.</h2>
+        <h2 className='f4 f3-l fw2 gray ma1  '>Choose your video file</h2>
+        <Segment>
+          <DropzoneContainer>
+            <Dropzone className='dropzone' onDrop={this.onDrop}>
+              <h2 className='f5 f4-l fw1 gray ma1 '>MP4 Video File</h2>
+              <h2 className='f6 f5-l fw1 gray mb3 ma1 '>
+                Drag video file here or click to browse
+              </h2>
+              <Icon name='file video' size='huge' color='teal' />
+            </Dropzone>
+          </DropzoneContainer>
+        </Segment>
+        {this.renderError()}
+      </Container>
     );
   }
 }
