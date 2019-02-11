@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   return (
@@ -12,10 +13,11 @@ const HomePage = () => {
             A fast simple MP4 to GIF creation tool
           </h2>
         </TextWrapper>
-
-        <Button color={'teal'} size='huge'>
-          Create a GIF
-        </Button>
+        <Link to='/create'>
+          <Button color={'teal'} size='huge'>
+            Create a GIF
+          </Button>
+        </Link>
       </div>
     </article>
   );
