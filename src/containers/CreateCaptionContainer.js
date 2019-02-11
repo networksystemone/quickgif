@@ -33,7 +33,10 @@ class Caption extends React.Component {
   };
 
   downloadFile = () => {
-    this.props.GifStore.setGifComplete(true);
+    const { gif } = this.props.GifStore;
+    if (gif) {
+      this.props.GifStore.setGifComplete(true);
+    }
   };
 
   render() {
