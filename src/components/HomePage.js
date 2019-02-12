@@ -10,7 +10,7 @@ const HomePage = () => {
         <TextWrapper>
           <h1 className='f2-m f-subheadline-l fw5 tc'>Quick GIF</h1>
           <h2 className='f2-m f1-l fw2 tc'>
-            A fast simple MP4 to GIF creation tool
+            A fast and simple MP4 to GIF creation tool
           </h2>
         </TextWrapper>
         <Link to='/create'>
