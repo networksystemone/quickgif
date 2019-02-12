@@ -8,8 +8,8 @@ const HomePage = () => {
     <article className='vh-100 dt w-100 avenir'>
       <div className='dtc v-mid tc gray ph3 ph4-l'>
         <TextWrapper>
-          <h1 className='f2-m f-subheadline-l fw5 tc'>Quick GIF</h1>
-          <h2 className='f2-m f1-l fw2 tc'>
+          <h1 className='f2-m f1-l fw5 tc'>Quick GIF</h1>
+          <h2 className='f3-m f2-l fw2 tc'>
             A fast and simple MP4 to GIF creation tool
           </h2>
         </TextWrapper>
