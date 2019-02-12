@@ -17,7 +17,7 @@ const Navbar = () => {
         </Link>
         <a
           className='link dim dark-gray f6 f5-ns dib'
-          href='https://github.com/kalebso'
+          href='https://github.com/kalebso/quickgif'
           title='View Source'
         >
           View Source
