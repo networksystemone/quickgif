@@ -1,6 +1,5 @@
 # QuickGIF
-  GIF creation utility tool build in Javascript. Check out the project live at www.quickgif.app
-  
+  GIF creation utility tool build in Javascript. Check out the project live at https://quickgif.herokuapp.com/
 # Tools Used
   QuickGIF uses the Gifshot.js, Styled Components, React Router and MobX.
 
