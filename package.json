@@ -60,10 +60,9 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "dev": "node scripts/start.js",
-    "start": "serve -s build",
-    "test": "node scripts/test.js --env=jsdom",
-    "heroku-postbuild": "npm run build"
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js --env=jsdom"
   },
   "babel": {
     "presets": [
