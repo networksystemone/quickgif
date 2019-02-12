@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const HomePage = () => {
   return (
     <article className='vh-100 dt w-100 avenir'>
-      <div className='dtc v-mid tc black ph3 ph4-l'>
+      <div className='dtc v-mid tc gray ph3 ph4-l'>
         <TextWrapper>
           <h1 className='f2-m f-subheadline-l fw5 tc'>Quick GIF</h1>
           <h2 className='f2-m f1-l fw2 tc'>
@@ -26,5 +26,5 @@ const HomePage = () => {
 export default HomePage;
 
 const TextWrapper = styled.div`
-  margin: 1rem;
+  margin-bottom: 2rem;
 `;
